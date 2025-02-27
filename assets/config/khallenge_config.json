@@ -1,0 +1,25 @@
+{
+    "khallenges": [
+        {
+            "game": "Super Monkey Ball 2",
+            "description": "3-4 Dribbles",
+            "difficulty": 4,
+            "xp": 400
+        }, {
+            "game": "Super Monkey Ball 2",
+            "description": "Do whatever in 10 seconds",
+            "difficulty": 3,
+            "xp": 300
+        }, {
+            "game": "Super Monkey Ball 2",
+            "description": "Do this too",
+            "difficulty": 2,
+            "xp": 200
+        }, {
+            "game": "Super Monkey Ball 2",
+            "description": "Do that as well",
+            "difficulty": 1,
+            "xp": 100
+        }
+    ]
+}
