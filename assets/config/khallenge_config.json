@@ -20,6 +20,11 @@
             "description": "Do that as well",
             "difficulty": 1,
             "xp": 100
+        }, {   
+            "game": "Sammy time",
+            "description": "Give Sam Kluber one million real dollars",
+            "difficulty": "Expert Level",
+            "xp": "idk like 10"
         }
     ]
 }
