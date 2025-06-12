@@ -14,9 +14,6 @@ const Home = () => {
     return (
         <SafeAreaView style={styles.container}>
             <ImageBackground source={require("../../../assets/images/background.png")} style={styles.background}>
-                <Text style={{ fontFamily: 'RunescapeFont', fontSize: 20, color: 'yellow'}}>
-                    This language fucking sucks!
-                </Text>
             </ImageBackground>
          </SafeAreaView>
     )
