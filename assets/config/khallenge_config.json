@@ -1,30 +1,54 @@
 {
-    "khallenges": [
+    "Super Monkey Ball 2": [
         {
-            "game": "Super Monkey Ball 2",
             "description": "3-4 Dribbles",
             "difficulty": 4,
-            "xp": 400
-        }, {
-            "game": "Super Monkey Ball 2",
+            "xp": 400,
+            "id": 0    
+        },
+        {
             "description": "Do whatever in 10 seconds",
             "difficulty": 3,
-            "xp": 300
-        }, {
-            "game": "Super Monkey Ball 2",
+            "xp": 300,
+            "id": 1
+        },
+        {
             "description": "Do this too",
             "difficulty": 2,
-            "xp": 200
-        }, {
-            "game": "Super Monkey Ball 2",
+            "xp": 200,
+            "id": 2
+        },
+        {
             "description": "Do that as well",
             "difficulty": 1,
-            "xp": 100
-        }, {   
-            "game": "Sammy time",
-            "description": "Give Sam Kluber one million real dollars",
-            "difficulty": "Expert Level",
-            "xp": "idk like 10"
+            "xp": 100,
+            "id": 3
+        }
+    ],
+    "Beer Pong": [
+        {
+            "description": "Sink 30 freaking cups ya animal!",
+            "difficulty": 4,
+            "xp": 400,
+            "id": 0    
+        },
+        {
+            "description": "i dont know this is testing stuff",
+            "difficulty": 3,
+            "xp": 300,
+            "id": 1
+        },
+        {
+            "description": "hit em with the ball or something",
+            "difficulty": 2,
+            "xp": 200,
+            "id": 2
+        },
+        {
+            "description": "Uh oh beeeeeeer time!",
+            "difficulty": 1,
+            "xp": 100,
+            "id": 3
         }
     ]
 }
