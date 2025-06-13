@@ -21,9 +21,10 @@ const KsKompanionHeader = ({ text, duration = 10000, ...props }) => {
                 <RunescapeText
                     color="black"
                     fontSize={36}
+                    shadowColor="transparent"
                     style={{
                         textAlign: 'center',
-                        padding: 15
+                        padding: 15,
                     }}
                 >
                     {text}

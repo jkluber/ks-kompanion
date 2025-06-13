@@ -10,7 +10,6 @@ const RunescapeText = ({ children, color, shadowColor, fontSize, font, style, ..
     return (
         <Text
             style={[
-                style, // other styles passed in
                 {
                     flex: 1,
                     color: color || 'yellow',
@@ -19,6 +18,7 @@ const RunescapeText = ({ children, color, shadowColor, fontSize, font, style, ..
                     textShadowColor: shadowColor || 'black', 
                     textShadowOffset: { width: 1, height: 1 },
                 },
+                style, // Allow for custom styling
             ]}
             {...props} // Pass additional props like adjustsFontSizeToFit
         >

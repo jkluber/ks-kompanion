@@ -92,15 +92,15 @@ const Khallenges = () => {
                     borderBottomWidth: 1,
                 }}
             >
-                <Text 
+                <RunescapeText
+                    font='RunescapeBold'
+                    fontSize={36}
                     style={{ 
-                        fontFamily: 'RunescapeBold', 
-                        fontSize: 32, 
-                        color: 'yellow', 
                         textAlign: 'center',
+                        textShadowOffset: { width: 3, height: 3 },
                     }}>
                     {section.title}
-                </Text>
+                </RunescapeText>
             </View>
         );
     };
