@@ -4,10 +4,12 @@ const TabIcon = ({focused, iconSource}) => {
     return (
         <View
             style={{
+                width: '70%', // Set a fixed width for the icon container
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexDirection: 'row',
-                borderWidth: 5,
+                borderWidth: 3,
+                borderRadius: 5, // Add rounded corners to the icon container
                 borderColor: 'black', // Add border to the icon container
             }}
         >
@@ -36,6 +38,7 @@ const TabIcon = ({focused, iconSource}) => {
                         style={{
                         width: 40,
                         height: 40,
+                        resizeMode: 'contain', // Ensure the icon fits within the container
                         }}
                     />
                 </View>

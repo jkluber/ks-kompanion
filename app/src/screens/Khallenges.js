@@ -51,6 +51,7 @@ const Khallenges = () => {
                             width: 20, // Width of the image
                             height: 20, // Height of the image
                             marginRight: 10, // Space between image and text
+                            resizeMode: 'contain', // Ensure the icon fits within the container
                         }}
                     />
                     <View style={{ flex: 1 }}>
@@ -66,7 +67,7 @@ const Khallenges = () => {
                         <RunescapeText 
                             style={{ 
                                 fontSize: 18, 
-                                marginTop: 5
+                                marginTop: 5,
                             }}
                             color='rgb(0, 191, 134)'
                             adjustsFontSizeToFit={true} // Adjust font size to fit the text
@@ -100,17 +101,6 @@ const Khallenges = () => {
                     }}>
                     {section.title}
                 </Text>
-                {allCompleted && (
-                    <View
-                        style={{
-                            position: 'absolute',
-                            width: '75%',
-                            top: '50%',
-                            height: 2, // Thickness of the line
-                            backgroundColor: 'red', // Color of the strike-through line
-                        }}
-                    />
-                )}
             </View>
         );
     };

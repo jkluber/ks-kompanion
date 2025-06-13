@@ -10,7 +10,7 @@ const RunescapeText = ({ children, color, shadowColor, fontSize, font, style, ..
     return (
         <Text
             style={[
-                style, // Allow overriding styles
+                style, // other styles passed in
                 {
                     flex: 1,
                     color: color || 'yellow',

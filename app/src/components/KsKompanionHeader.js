@@ -1,36 +1,30 @@
-import React, { useState } from 'react';
-import { View, ImageBackground } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { Animated, View, ImageBackground, Image } from 'react-native';
 import RunescapeText from './RunescapeText'; // Adjust the path as necessary
 
-const KsKompanionHeader = ({ text, ...props }) => {
-
+const KsKompanionHeader = ({ text, duration = 10000, ...props }) => {
     return (    
         <View
             style={{
-                width: '100%', // Full width
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderWidth: 2,
-                borderColor: 'gray',
             }}
         >
             <ImageBackground
                 source={require('../../../assets/images/chat-log.png')} // Ensure this path is correct
                 style={{
-                    width: '100%', // Full width
-                    flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    flexDirection: 'row',
                 }}
             >
                 <RunescapeText
-                color="black"
-                fontSize={40}
-                style={{
-                    padding: 10,
-                    maxWidth: '70%',
-                    textAlign: 'center',
-                }}
+                    color="black"
+                    fontSize={36}
+                    style={{
+                        textAlign: 'center',
+                        padding: 15
+                    }}
                 >
                     {text}
                 </RunescapeText>

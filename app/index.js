@@ -17,12 +17,16 @@ const icons = {
 
 export default function Index() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'rgb(51, 45, 45)' }}>
     <Tab.Navigator screenOptions={{
         tabBarStyle: {
           postition: 'absolute',
-          height: '15%',
+          height: '10%',
           width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingBottom: 0,
+          backgroundColor: 'rgb(51, 45, 45)', // Semi-transparent background
         },
         tabBarIconStyle: {
           height: '100%',
