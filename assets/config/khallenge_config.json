@@ -1,30 +1,86 @@
 {
-    "khallenges": [
+    "Super Monkey Ball 2 this title is long": [
         {
-            "game": "Super Monkey Ball 2",
-            "description": "3-4 Dribbles",
-            "difficulty": 4,
-            "xp": 400
-        }, {
-            "game": "Super Monkey Ball 2",
+            "description": "3-4 Dribbles I want to test what happens when we actually make these really long and see if it wraps weird",
+            "difficulty": "elite",
+            "xp": 400,
+            "id": 0    
+        },
+        {
             "description": "Do whatever in 10 seconds",
-            "difficulty": 3,
-            "xp": 300
-        }, {
-            "game": "Super Monkey Ball 2",
+            "difficulty": "hard",
+            "xp": 300,
+            "id": 1
+        },
+        {
             "description": "Do this too",
-            "difficulty": 2,
-            "xp": 200
-        }, {
-            "game": "Super Monkey Ball 2",
+            "difficulty": "medium",
+            "xp": 200,
+            "id": 2
+        },
+        {
             "description": "Do that as well",
-            "difficulty": 1,
-            "xp": 100
-        }, {   
-            "game": "Sammy time",
-            "description": "Give Sam Kluber one million real dollars",
-            "difficulty": "Expert Level",
-            "xp": "idk like 10"
+            "difficulty": "easy",
+            "xp": 100,
+            "id": 3
+        },
+        {
+            "description": "Do that as well!!",
+            "difficulty": "easy",
+            "xp": 100,
+            "id": 4
+        }
+    ],
+    "Beer Pong": [
+        {
+            "description": "Sink 30 freaking cups ya animal!",
+            "difficulty": "easy",
+            "xp": 400,
+            "id": 0    
+        },
+        {
+            "description": "i dont know this is testing stuff",
+            "difficulty": "easy",
+            "xp": 300,
+            "id": 1
+        },
+        {
+            "description": "hit em with the ball or something",
+            "difficulty": "easy",
+            "xp": 200,
+            "id": 2
+        },
+        {
+            "description": "Uh oh beeeeeeer time!",
+            "difficulty": "easy",
+            "xp": 100,
+            "id": 3
+        }
+    ],
+    "Beer Pong 2": [
+        {
+            "description": "Sink 30 freaking cups ya animal!",
+            "difficulty": "easy",
+            "xp": 400,
+            "id": 0    
+        },
+        {
+            "description": "i dont know this is testing stuff",
+            "difficulty": "easy",
+            "xp": 300,
+            "id": 1
+        },
+        {
+            "description": "hit em with the ball or something",
+            "difficulty": "easy",
+            "xp": 200,
+            "id": 2
+        },
+        {
+            "description": "Uh oh beeeeeeer time!",
+            "difficulty": "easy",
+            "xp": 100,
+            "id": 3
         }
     ]
 }
