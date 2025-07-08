@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         backgroundColor: ROOT_CONTAINER_COLOR, // Background color for the entire screen
-        alignItems: 'center', // Center items horizontally
     },
     skillContainer: {
+        width: '45%', // Adjust width to fit two items per row
         height: 80,
         alignItems: 'center', // Center items horizontally
         backgroundColor: 'gray', // Background color for each skill item
@@ -108,8 +108,6 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: CIRCLE_SIZE,
         zIndex: 10,
     },
-    // You can add similar styles for other corners:
-    // cutoutTopRight, cutoutBottomLeft, cutoutBottomRight
 });
 
 export default Skills;
