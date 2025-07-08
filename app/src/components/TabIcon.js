@@ -1,29 +1,20 @@
-import { View, ImageBackground, Image, StyleSheet } from 'react-native';
+import { View, SafeAreaView, ImageBackground, Image, StyleSheet } from 'react-native';
 
 const TabIcon = ({focused, iconSource}) => {
     return (
-        <View
-            style={styles.iconContainer} // Use a fixed width for the icon container
-        >
-            <ImageBackground
-                source={require('../../../assets/icons/glyph.png')} // Ensure this path is correct
-                style={styles.fillContainer}
-            >
-                <View
-                    style={[
-                        styles.fillContainer,
-                        {
-                            backgroundColor: focused ? 'rgba(122, 41, 32, 0.7)' : 'transparent', // Change background color when focused
-                        }
+        <SafeAreaView style={styles.iconContainer}>
+            <ImageBackground source={require('../../../assets/icons/glyph.png')} style={styles.fillContainer}>
+                <View style={[
+                    styles.fillContainer,
+                    {
+                        backgroundColor: focused ? 'rgba(122, 41, 32, 0.7)' : 'transparent', // Change background color when focused
+                    }
                     ]}
                 >
-                    <Image
-                        source={iconSource}
-                        style={styles.iconImage}
-                    />
+                    <Image source={iconSource} style={styles.iconImage}/>
                 </View>
             </ImageBackground>
-        </View>
+        </SafeAreaView>
     );
 };
 
