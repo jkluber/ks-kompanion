@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity} from 'react-native';
+import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
 import * as Application from 'expo-application';
 import * as Device from 'expo-device';
-import { checkNewUser } from '../utils/MiscUtils';
+import { checkNewUser, rollRandomEvent } from '../utils/MiscUtils';
 import DefaultModal from '../components/DefaultModal';
 import RunescapeText from '../components/RunescapeText';
 
@@ -10,6 +10,8 @@ const Home = () => {
 
     const [newUser, setNewUser] = useState(false);
     const [username, setUsername] = useState('');
+    const [randomEventResult, setRandomEventResult] = useState('');
+    const [randomEventModalVisible, setRandomEventModalVisible] = useState(false);
 
     useEffect(() => {
         const checkDeviceId = async() => {
@@ -21,12 +23,12 @@ const Home = () => {
     }, []);
 
     async function fetchDeviceId() {
-    if ('iOS' === Device.osName) {
-        return await Application.getIosIdForVendorAsync();
-    } else {
-        return Application.getAndroidId();
+        if ('iOS' === Device.osName) {
+            return await Application.getIosIdForVendorAsync();
+        } else {
+            return Application.getAndroidId();
+        }
     }
-}
 
     async function onSubmit() {
         if (username.trim()) {
@@ -36,6 +38,12 @@ const Home = () => {
             setNewUser(false);
             }
         }
+    }
+
+    const handleRollRandomEvent = () => {
+        const result = rollRandomEvent();
+        setRandomEventResult(result);
+        setRandomEventModalVisible(true);
     }
 
     return (
@@ -57,8 +65,35 @@ const Home = () => {
                 </TouchableOpacity>
             </DefaultModal>
             )}
+
+            <DefaultModal visible={randomEventModalVisible}>
+                <RunescapeText
+                    font="RunescapeBold"
+                    fontSize={20}
+                    style={{ textAlign: 'center', marginBottom: 24 }}>
+                    {randomEventResult}
+                </RunescapeText>
+                <TouchableOpacity style={styles.submit} onPress={() => setRandomEventModalVisible(false)}>
+                    <Text style={{ color: 'white' }}>Close</Text>
+                </TouchableOpacity>
+            </DefaultModal>
+
             <SafeAreaView style={styles.container}>
                 <ImageBackground source={require("../../../assets/images/background.png")} style={styles.background}>
+                    <View style={styles.grid}>
+                        <TouchableOpacity style={[styles.quadrant, {paddingLeft: 24}]} onPress={handleRollRandomEvent}>
+                            <Image source={require('../../../assets/images/genie.png')} style={styles.icon} resizeMode="contain"/>
+                            <RunescapeText
+                                font='RunescapeBold'
+                                fontSize={16}
+                                style={{ 
+                                    textAlign: 'center',
+                                    marginBottom: 24
+                                }}>
+                                Roll random event
+                        </RunescapeText>
+                        </TouchableOpacity>
+                    </View>
                 </ImageBackground>
             </SafeAreaView>
          </>
@@ -88,6 +123,21 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         alignItems: 'center',
         marginTop: 24
+    },
+    grid: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    quadrant: {
+        width: '50%',
+        height: '50%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    icon: {
+        width: 200,
+        height: 200
     }
 })
 
