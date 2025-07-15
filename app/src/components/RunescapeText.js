@@ -27,7 +27,6 @@ const RunescapeText = ({ children, color, shadowColor, fontSize, font, style, ..
 
 const styles = StyleSheet.create({
     text: {
-        flex: 1,
         textShadowOffset: { width: 1, height: 1 }
     }
 });

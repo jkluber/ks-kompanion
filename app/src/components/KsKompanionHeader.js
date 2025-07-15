@@ -1,5 +1,5 @@
 import { Animated, SafeAreaView, ImageBackground, Image, StyleSheet } from 'react-native';
-import RunescapeText from './RunescapeText'; // Adjust the path as necessary
+import RunescapeText from './RunescapeText';
 
 const KsKompanionHeader = ({ text, duration = 10000, ...props }) => {
     return (    
@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-        padding: 15
+        padding: 15,
+        flex: 1
     }
 });
 
