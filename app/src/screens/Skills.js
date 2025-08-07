@@ -1,7 +1,5 @@
 import {SafeAreaView, View, FlatList, Text, StyleSheet, Image} from 'react-native';
-import Svg, { Path } from 'react-native-svg';
 import SkillContainer from '../components/SkillContainer';
-import RunescapeText from '../components/RunescapeText';
 
 const skills={
     combat: {
@@ -26,24 +24,7 @@ const skills={
     }
 }
 
-const CIRCLE_SIZE = 10; // Adjust as needed
 const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the entire screen
-
-function getCutoutPath(w, h, r) {
-  // This path draws a rectangle with quarter-circle cutouts in each corner
-  return `
-    M${r},0
-    H${w - r}
-    A${r},${r} 0 0 1 ${w},${r}
-    V${h - r}
-    A${r},${r} 0 0 1 ${w - r},${h}
-    H${r}
-    A${r},${r} 0 0 1 0,${h - r}
-    V${r}
-    A${r},${r} 0 0 1 ${r},0
-    Z
-  `;
-}
 
 const Skills = () => {
 
