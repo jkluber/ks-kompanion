@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Animated, View, ImageBackground, Image } from 'react-native';
 import RunescapeText from './RunescapeText'; // Adjust the path as necessary
 
-const KsKompanionHeader = ({ text, duration = 10000, ...props }) => {
+const KsKompanionHeader = ({ text, ...props }) => {
     return (    
         <View
             style={{
