@@ -20,7 +20,6 @@ export const rollRandomEvent = async(deviceId) => {
         })
     });
     const result = await response.json();
-    console.log(result);
 
     if (result.ready) {
         let roll = Math.floor(Math.random() * 200);
