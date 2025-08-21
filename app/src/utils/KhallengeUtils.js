@@ -1,6 +1,6 @@
 export const kompleteKhallenge = (difficulty) => {
     //apply xp to skill once me and 2shoes figure out saves
-    //apply kp to user once me and 2shopes figure out saves
+    //apply kp to user once me and 2shoes figure out saves
     rollKhallengePet(difficulty);
 };
 

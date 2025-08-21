@@ -1,10 +1,8 @@
-import {useFonts} from 'expo-font';
 import { SafeAreaView, View, SectionList } from 'react-native';
 import khallengeJson from '../../../assets/config/khallenge_config.json';
 import RunescapeText from '../components/RunescapeText';
 import {useState} from 'react';
 import KhallengeItem from '../components/KhallengeItem';
-import DefaultModal from '../components/DefaultModal';
 
 
 const Khallenges = () => {
@@ -64,7 +62,6 @@ const Khallenges = () => {
                 renderSectionHeader={renderSectionHeader}
                 keyExtractor={(item) => item.UUID}
             />
-            <DefaultModal/>
         </SafeAreaView>
     );
 }

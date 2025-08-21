@@ -45,7 +45,7 @@ export default function Index() {
             options={{
                 headerShown: true,
                 header: () => (
-                    <KsKompanionHeader text="Welcome to Old School Klube Scroll."/>  
+                    <KsKompanionHeader text="Welcome to Old School Klubscroll."/>  
                 ),
                 tabBarIcon: ({ focused }) => (
                     <TabIcon 

@@ -1,21 +1,35 @@
-import { useState } from "react";
-import { SafeAreaView, Modal, View } from "react-native";
+import { Modal, View, StyleSheet, KeyboardAvoidingView } from "react-native";
 
-const DefaultModal = () => {
-    const [modalVisible, setModalVisible] = useState(false);
+const DefaultModal = ({visible, children}) => {
     return (
-        <SafeAreaView>
-            <Modal 
-                animationType="slide"
-                visible={modalVisible}
-                onRequestClose={() => {setModalVisible(!modalVisible);}}>
+        <Modal 
+            animationType="slide"
+            visible={visible}
+            transparent={true}
+            onRequestClose={() => {}}>
 
-                <View>
-                    "Modal"
+            <KeyboardAvoidingView style={styles.container}>
+                <View style={styles.modalBox}>
+                    {children}
                 </View>
-            </Modal>
-        </SafeAreaView>
+            </KeyboardAvoidingView>
+        </Modal>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    modalBox: {
+        backgroundColor: "silver",
+        width: "80%",
+        maxWidth: 350,
+        padding: 20,
+        borderRadius: 10,
+  }
+});
 
 export default DefaultModal;

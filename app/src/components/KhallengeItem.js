@@ -29,7 +29,7 @@ const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
                             fontSize: 24, 
                         }}
                         color={isComplete ? 'rgb(0, 191, 134)' : 'rgb(137, 129, 122)'}
-                        adjustsFontSizeToFit={true} // Adjust font size to fit the text
+                        adjustsFontSizeToFit={true}
                     >
                         {item.description}
                     </RunescapeText>
@@ -38,7 +38,7 @@ const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
                             fontSize: 18, 
                             marginTop: 5,
                         }}
-                        adjustsFontSizeToFit={true} // Adjust font size to fit the text
+                        adjustsFontSizeToFit={true}
                     >
                         Reward: {item.xp} Experience
                     </RunescapeText>
