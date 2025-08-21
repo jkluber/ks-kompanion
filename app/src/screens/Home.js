@@ -35,13 +35,14 @@ const Home = () => {
             let deviceId = await fetchDeviceId();
             let result = await checkNewUser(deviceId, username.trim());
             if (result) {
-            setNewUser(false);
+                setNewUser(false);
             }
         }
     }
 
-    const handleRollRandomEvent = () => {
-        const result = rollRandomEvent();
+    async function handleRollRandomEvent() {
+        let deviceId = await fetchDeviceId();
+        const result = rollRandomEvent(deviceId);
         setRandomEventResult(result);
         setRandomEventModalVisible(true);
     }
