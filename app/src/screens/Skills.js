@@ -1,44 +1,39 @@
-import {SafeAreaView, View, FlatList, Text, StyleSheet} from 'react-native';
+import {SafeAreaView, View, FlatList, Text, StyleSheet, Image} from 'react-native';
+import SkillContainer from '../components/SkillContainer';
 
 const skills={
     combat: {
-        level: 1,
-        experience: 0
+        level: 99,
+        experience: 0,
+        icon: require('../../../assets/icons/combat.png')
     },
     magic: {
-        level: 1,
-        experience: 0
+        level: 23,
+        experience: 0,
+        icon: require('../../../assets/icons/magic.png')
     },
     crafting: {
-        level: 1,
-        experience: 0
+        level: 4,
+        experience: 0,
+        icon: require('../../../assets/icons/crafting.png')
     },
     fishing: {
-        level: 1,
-        experience: 0
+        level: 7,
+        experience: 0,
+        icon: require('../../../assets/icons/fishing.png')
     }
 }
 
-const CIRCLE_SIZE = 10; // Adjust as needed
 const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the entire screen
-
 
 const Skills = () => {
 
-    const renderSkill = (item) => {    
-        console.log(item); // Log the item to see what it contains
-        const skill = skills[item]; // Access the skill object using the item key
+    // Usage in your FlatList renderItem:
+    const renderSkill = (item) => {
+        const skill = skills[item];
         return (
-            <View style={styles.skillContainer}>
-                <View style={styles.cutoutTopLeft} />
-                <View style={styles.cutoutTopRight} />
-                <View style={styles.cutoutBottomLeft} />
-                <View style={styles.cutoutBottomRight} />
-                {/* Render the skill name and level */}
-                <Text>
-                    {item}: Level {skill.level}
-                </Text>
-            </View>
+            <SkillContainer skill={skill}>
+            </SkillContainer>
         );
     };
 
@@ -50,6 +45,7 @@ const Skills = () => {
                 keyExtractor={(item) => item} // Use index as key for now
                 scrollEnabled={false}
                 numColumns={2} // Display items in two columns
+                contentContainerStyle={{ alignItems: 'center', padding: 20 }} // Center items in the FlatList
             >
             </FlatList>
         </SafeAreaView>
@@ -107,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: ROOT_CONTAINER_COLOR, // Match your background color
         borderTopLeftRadius: CIRCLE_SIZE,
         zIndex: 10,
-    },
+    }
 });
 
 export default Skills;

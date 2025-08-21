@@ -1,7 +1,8 @@
+import { useRef, useEffect } from 'react';
 import { Animated, SafeAreaView, ImageBackground, Image, StyleSheet } from 'react-native';
 import RunescapeText from './RunescapeText';
 
-const KsKompanionHeader = ({ text, duration = 10000, ...props }) => {
+const KsKompanionHeader = ({ text, ...props }) => {
     return (    
         <SafeAreaView style={styles.container}>
             <ImageBackground source={require('../../../assets/images/chat-log.png')} style={styles.background}>
@@ -9,7 +10,7 @@ const KsKompanionHeader = ({ text, duration = 10000, ...props }) => {
                     {text}
                 </RunescapeText>
             </ImageBackground>           
-        </SafeAreaView>
+        </View>
     );
 };
 
