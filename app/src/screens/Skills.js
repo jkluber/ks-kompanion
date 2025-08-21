@@ -56,10 +56,54 @@ const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
         backgroundColor: ROOT_CONTAINER_COLOR, // Background color for the entire screen
-        alignItems: 'center', // Center items horizontally
     },
-    // You can add similar styles for other corners:
-    // cutoutTopRight, cutoutBottomLeft, cutoutBottomRight
+    skillContainer: {
+        width: '45%', // Adjust width to fit two items per row
+        height: 80,
+        alignItems: 'center', // Center items horizontally
+        backgroundColor: 'gray', // Background color for each skill item
+        position: 'relative', // Position relative for cutouts
+    },
+    cutoutTopLeft: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: CIRCLE_SIZE,
+        height: CIRCLE_SIZE,
+        backgroundColor: ROOT_CONTAINER_COLOR, // Match your background color
+        borderBottomRightRadius: CIRCLE_SIZE,
+        zIndex: 10,
+    },
+    cutoutTopRight: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: CIRCLE_SIZE,
+        height: CIRCLE_SIZE,
+        backgroundColor: ROOT_CONTAINER_COLOR, // Match your background color
+        borderBottomLeftRadius: CIRCLE_SIZE,
+        zIndex: 10,
+    },
+    cutoutBottomLeft: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: CIRCLE_SIZE,
+        height: CIRCLE_SIZE,
+        backgroundColor: ROOT_CONTAINER_COLOR, // Match your background color
+        borderTopRightRadius: CIRCLE_SIZE,
+        zIndex: 10,
+    },
+    cutoutBottomRight: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        width: CIRCLE_SIZE,
+        height: CIRCLE_SIZE,
+        backgroundColor: ROOT_CONTAINER_COLOR, // Match your background color
+        borderTopLeftRadius: CIRCLE_SIZE,
+        zIndex: 10,
+    }
 });
 
 export default Skills;

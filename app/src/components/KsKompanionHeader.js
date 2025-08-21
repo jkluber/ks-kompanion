@@ -1,36 +1,34 @@
-import React, { useRef, useEffect } from 'react';
-import { Animated, View, ImageBackground, Image } from 'react-native';
-import RunescapeText from './RunescapeText'; // Adjust the path as necessary
+import { useRef, useEffect } from 'react';
+import { Animated, SafeAreaView, ImageBackground, Image, StyleSheet } from 'react-native';
+import RunescapeText from './RunescapeText';
 
 const KsKompanionHeader = ({ text, ...props }) => {
     return (    
-        <View
-            style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
-        >
-            <ImageBackground
-                source={require('../../../assets/images/chat-log.png')} // Ensure this path is correct
-                style={{
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexDirection: 'row',
-                }}
-            >
-                <RunescapeText
-                    color="black"
-                    fontSize={36}
-                    style={{
-                        textAlign: 'center',
-                        padding: 15
-                    }}
-                >
+        <SafeAreaView style={styles.container}>
+            <ImageBackground source={require('../../../assets/images/chat-log.png')} style={styles.background}>
+                <RunescapeText color="black" fontSize={36} shadowColor="transparent" style={styles.text}>
                     {text}
                 </RunescapeText>
             </ImageBackground>           
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    background: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    text: {
+        textAlign: 'center',
+        padding: 15,
+        flex: 1
+    }
+});
 
 export default KsKompanionHeader;
