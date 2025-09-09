@@ -1,9 +1,10 @@
 import { SafeAreaView, View, SectionList } from 'react-native';
 import khallengeJson from '../../../assets/config/khallenge_config.json';
 import RunescapeText from '../components/RunescapeText';
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 import KhallengeItem from '../components/KhallengeItem';
-import { kompleteKhallenge } from '../utils/KhallengeUtils';
+import { useFocusEffect } from '@react-navigation/native';
+import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
 
 
 const Khallenges = () => {
@@ -15,13 +16,11 @@ const Khallenges = () => {
         title: key, // The key (e.g., "Super Monkey Ball 2")
         data: khallengeJson[key].map((item) => ({
             ...item,
-            UUID: `${key}-${item.id}`, // Add the section title to each item
+            id: item.id, // Add the section title to each item
         })),
     }));
 
     const renderSectionHeader = ({ section }) => {
-        const allCompleted = section.data.every((item) => completedItems[item.UUID]);
-
         return (
             <View 
                 style={{ 
@@ -44,26 +43,51 @@ const Khallenges = () => {
         );
     };
 
+    useFocusEffect(
+        useCallback(() => {
+            console.log("Here");
+            const fetchCompletion = async() => {
+                try {
+                    let deviceId = await fetchDeviceId();
+                    const result = await sendRequest("POST", JSON.stringify({
+                        deviceId: deviceId,
+                        method: "getKhallengePoints"
+                    }));
+                    const newCompleted = {};
+                    if (result.ids && Array.isArray(result.ids)) {
+                        result.ids.forEach(id => {
+                            newCompleted[id] = true;
+                        });
+                    }
+                    setCompletedItems(newCompleted);
+                } catch (err) {
+                    console.error(err);
+                }
+            };
+            fetchCompletion();
+        }, [])
+    );
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'rgb(88, 85, 80)' }}>
             <SectionList
                 sections={sections}
                 renderItem={({ item, index }) => <KhallengeItem item={item} 
                                                     index={index} 
-                                                    isComplete={completedItems[item.UUID]} 
+                                                    isComplete={completedItems[item.id]} 
                                                     onToggle={async() => {
                                                         setCompletedItems(prev => {
                                                             const newState = { ...prev };
-                                                            if (newState[item.UUID]) {
-                                                                delete newState[item.UUID];
+                                                            if (newState[item.id]) {
+                                                                delete newState[item.id];
                                                             } else {
-                                                                newState[item.UUID] = true;
+                                                                newState[item.id] = true;
                                                             };
                                                             return newState;
                                                         });
                                                 }}/>}
                 renderSectionHeader={renderSectionHeader}
-                keyExtractor={(item) => item.UUID}
+                keyExtractor={(item) => item.id}
             />
         </SafeAreaView>
     );

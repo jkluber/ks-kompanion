@@ -48,12 +48,10 @@ export const fetchDeviceId = async() => {
 };
 
 export const sendRequest = async(method, body) => {
-    console.log(body);
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyUVBk65nkdGz2FsOSNOM_iAx86rDOLVKOR8-90SmLDSfTajcLzhfXeNPlZ52EZ5K0/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxteihQqA0EI4_TXeVPDi94GfkD7-v4RcdVa43Rahu2bL30E5q_OmDgbpV1P4C_5ks/exec", {
         method: method,
         body: body
     });
     const result = await response.json();
-    console.log(response);
     return result;
 }

@@ -11,7 +11,7 @@ const images = {
 
 const handleItemPress = (item, isComplete) => {
     let operator = isComplete ? "+" : "-";
-    kompleteKhallenge(item.difficulty, item.skill, item.xp, operator);
+    kompleteKhallenge(item.difficulty, item.skill, item.xp, operator, item.id);
 }
 
 const KhallengeItem = ({ item, index, isComplete, onToggle}) => {

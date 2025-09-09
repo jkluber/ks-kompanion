@@ -1,18 +1,20 @@
 import { modifyXP, fetchDeviceId, sendRequest } from "./MiscUtils";
 
-export const kompleteKhallenge = async(difficulty, skill, xp, operator) => {
+export const kompleteKhallenge = async(difficulty, skill, xp, operator, id) => {
     let deviceId = await fetchDeviceId();
     modifyXP(deviceId, skill, xp, operator);
-    modifyKhallengePoints(deviceId, difficulty, operator);
+    modifyKhallengePoints(deviceId, difficulty, operator, id);
     rollKhallengePet(difficulty);
 };
 
-export const modifyKhallengePoints = async(deviceId, difficulty, operator) => {
+export const modifyKhallengePoints = async(deviceId, difficulty, operator, id) => {
+    console.log(id);
     const result = sendRequest("POST", JSON.stringify({
         deviceId: deviceId,
         points: khallengePointsByDifficulty(difficulty),
         operator: operator,
-        method: "modifyKhallengePoints"
+        method: "modifyKhallengePoints",
+        id: id
     }));
     return result.updated;
 };
