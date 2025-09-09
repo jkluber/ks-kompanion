@@ -1,23 +1,20 @@
-import { modifyXP } from "./MiscUtils";
+import { modifyXP, fetchDeviceId, sendRequest } from "./MiscUtils";
 
-export const kompleteKhallenge = async(difficulty, skill) => {
+export const kompleteKhallenge = async(difficulty, skill, xp, operator) => {
     let deviceId = await fetchDeviceId();
-    modifyXP(deviceId, skill, xpByDifficulty(difficulty), "+");
-    //apply kp to user once me and 2shoes figure out saves
+    modifyXP(deviceId, skill, xp, operator);
+    modifyKhallengePoints(deviceId, difficulty, operator);
     rollKhallengePet(difficulty);
 };
 
-export const xpByDifficulty = (difficulty) => {
-    switch (difficulty) {
-        case "easy":
-            return 100;
-        case "medium":
-            return 200;
-        case "hard":
-            return 300;
-        case "elite":
-            return 400;
-    }
+export const modifyKhallengePoints = async(deviceId, difficulty, operator) => {
+    const result = sendRequest("POST", JSON.stringify({
+        deviceId: deviceId,
+        points: khallengePointsByDifficulty(difficulty),
+        operator: operator,
+        method: "modifyKhallengePoints"
+    }));
+    return result.updated;
 };
 
 export const khallengePointsByDifficulty = (difficulty) => {
@@ -30,21 +27,14 @@ export const khallengePointsByDifficulty = (difficulty) => {
             return 3;
         case "elite":
             return 4;
+        default:
+            return 0;
     }
 };
 
 export const rollKhallengePet = () => {
     const roll = Math.floor(Math.random() * 1000);
-    console.log(roll);
     if (999 == roll) {
         console.log("You rolled a pet!");
     }
 };
-
-async function fetchDeviceId() {
-    if ('iOS' === Device.osName) {
-        return await Application.getIosIdForVendorAsync();
-    } else {
-        return Application.getAndroidId();
-    }
-}

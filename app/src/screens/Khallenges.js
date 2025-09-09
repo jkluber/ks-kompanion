@@ -3,6 +3,7 @@ import khallengeJson from '../../../assets/config/khallenge_config.json';
 import RunescapeText from '../components/RunescapeText';
 import {useState} from 'react';
 import KhallengeItem from '../components/KhallengeItem';
+import { kompleteKhallenge } from '../utils/KhallengeUtils';
 
 
 const Khallenges = () => {
@@ -50,15 +51,17 @@ const Khallenges = () => {
                 renderItem={({ item, index }) => <KhallengeItem item={item} 
                                                     index={index} 
                                                     isComplete={completedItems[item.UUID]} 
-                                                    onToggle={() => setCompletedItems(prev => {
-                                                        const newState = { ...prev };
-                                                        if (newState[item.UUID]) {
-                                                            delete newState[item.UUID];
-                                                        } else {
-                                                            newState[item.UUID] = true;
-                                                        }
-                                                        return newState;
-                                                    })}/>}
+                                                    onToggle={async() => {
+                                                        setCompletedItems(prev => {
+                                                            const newState = { ...prev };
+                                                            if (newState[item.UUID]) {
+                                                                delete newState[item.UUID];
+                                                            } else {
+                                                                newState[item.UUID] = true;
+                                                            };
+                                                            return newState;
+                                                        });
+                                                }}/>}
                 renderSectionHeader={renderSectionHeader}
                 keyExtractor={(item) => item.UUID}
             />

@@ -10,16 +10,15 @@ const images = {
 };
 
 const handleItemPress = (item, isComplete) => {
-    if (isComplete) {
-        kompleteKhallenge(item.difficulty);
-    }
+    let operator = isComplete ? "+" : "-";
+    kompleteKhallenge(item.difficulty, item.skill, item.xp, operator);
 }
 
 const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
     return (
         <TouchableOpacity onPress={() => {
             onToggle();
-            handleItemPress(item, isComplete);
+            handleItemPress(item, !isComplete);
         }}>
             <View style={[styles.container, {backgroundColor: index % 2 === 0 ? 'rgb(90, 83, 72)' : 'rgb(79, 69, 59)'}]}>
                 <Image source={images[item.difficulty]} style={styles.image}/>

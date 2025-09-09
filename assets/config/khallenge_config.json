@@ -1,86 +1,128 @@
 {
-    "Super Monkey Ball 2 this title is long": [
-        {
-            "description": "3-4 Dribbles I want to test what happens when we actually make these really long and see if it wraps weird",
-            "difficulty": "elite",
-            "xp": 400,
-            "id": 0    
-        },
-        {
-            "description": "Do whatever in 10 seconds",
-            "difficulty": "hard",
-            "xp": 300,
-            "id": 1
-        },
-        {
-            "description": "Do this too",
-            "difficulty": "medium",
-            "xp": 200,
-            "id": 2
-        },
-        {
-            "description": "Do that as well",
-            "difficulty": "easy",
-            "xp": 100,
-            "id": 3
-        },
-        {
-            "description": "Do that as well!!",
-            "difficulty": "easy",
-            "xp": 100,
-            "id": 4
-        }
-    ],
-    "Beer Pong": [
-        {
-            "description": "Sink 30 freaking cups ya animal!",
-            "difficulty": "easy",
-            "xp": 400,
-            "id": 0    
-        },
-        {
-            "description": "i dont know this is testing stuff",
-            "difficulty": "easy",
-            "xp": 300,
-            "id": 1
-        },
-        {
-            "description": "hit em with the ball or something",
-            "difficulty": "easy",
-            "xp": 200,
-            "id": 2
-        },
-        {
-            "description": "Uh oh beeeeeeer time!",
-            "difficulty": "easy",
-            "xp": 100,
-            "id": 3
-        }
-    ],
-    "Beer Pong 2": [
-        {
-            "description": "Sink 30 freaking cups ya animal!",
-            "difficulty": "easy",
-            "xp": 400,
-            "id": 0    
-        },
-        {
-            "description": "i dont know this is testing stuff",
-            "difficulty": "easy",
-            "xp": 300,
-            "id": 1
-        },
-        {
-            "description": "hit em with the ball or something",
-            "difficulty": "easy",
-            "xp": 200,
-            "id": 2
-        },
-        {
-            "description": "Uh oh beeeeeeer time!",
-            "difficulty": "easy",
-            "xp": 100,
-            "id": 3
-        }
-    ]
+  "Boom Cup": [
+    {"description":"Play a game (minimum 20 cups)","difficulty":"repeatable","xp":300,"id":0,"repeatable":true,"skill":"Combat"},
+    {"description":"Stack someone","difficulty":"easy","xp":100,"id":1,"repeatable":false,"skill":"Combat"},
+    {"description":"Complete a game without getting stacked","difficulty":"medium","xp":200,"id":2,"repeatable":false,"skill":"Combat"},
+    {"description":"Pass the cup to 5 different people in a single game","difficulty":"hard","xp":300,"id":3,"repeatable":false,"skill":"Combat"},
+    {"description":"Never pass the cup to the same person twice in a single game","difficulty":"elite","xp":400,"id":4,"repeatable":false,"skill":"Combat"}
+  ],
+  "Flip Cup": [
+    {"description":"Play a round (minimum 4 people)","difficulty":"repeatable","xp":200,"id":5,"repeatable":true,"skill":"Combat"},
+    {"description":"Flip within 3 tries","difficulty":"easy","xp":100,"id":6,"repeatable":false,"skill":"Combat"},
+    {"description":"Be on a winning team","difficulty":"medium","xp":200,"id":7,"repeatable":false,"skill":"Combat"},
+    {"description":"First try flip","difficulty":"hard","xp":300,"id":8,"repeatable":false,"skill":"Combat"},
+    {"description":"Whole team first try flip","difficulty":"elite","xp":400,"id":9,"repeatable":false,"skill":"Combat"}
+  ],
+  "Monkey Ball": [
+    {"description":"Clear a level","difficulty":"repeatable","xp":25,"id":10,"repeatable":true,"skill":"Magic"},
+    {"description":"Complete 2-3 Hoppers just pick another easy level","difficulty":"easy","xp":100,"id":11,"repeatable":false,"skill":"Magic"},
+    {"description":"Get a strike in monkey bowling","difficulty":"medium","xp":200,"id":12,"repeatable":false,"skill":"Magic"},
+    {"description":"Complete 1-7 Slopes in under 10 seconds pick another level of similar difficulty","difficulty":"hard","xp":300,"id":13,"repeatable":false,"skill":"Magic"},
+    {"description":"Complete 3-4 Dribbles in under 10 seconds","difficulty":"elite","xp":400,"id":14,"repeatable":false,"skill":"Magic"}
+  ],
+  "Smash Bros": [
+    {"description":"Complete a game (at least 3 stock)","difficulty":"repeatable","xp":125,"id":15,"repeatable":true,"skill":"Combat"},
+    {"description":"Hit a certain amount in the homerun contest","difficulty":"easy","xp":100,"id":16,"repeatable":false,"skill":"Combat"},
+    {"description":"Falcon/Ganon punch kill a level 5 CPU","difficulty":"medium","xp":200,"id":17,"repeatable":false,"skill":"Combat"},
+    {"description":"Win a Pokemon Battle (only items are pokeballs, can only damage your opponent through the pokemon you summon)","difficulty":"medium","xp":200,"id":171,"repeatable":false,"skill":"Combat"},
+    {"description":"Clear a certain break the targets stage in a certain amount of time","difficulty":"hard","xp":300,"id":18,"repeatable":false,"skill":"Combat"},
+    {"description":"3-stock a level 7 CPU","difficulty":"elite","xp":400,"id":19,"repeatable":false,"skill":"Combat"}
+  ],
+  "Mario Party": [
+    {"description":"Complete a game (minimum 10 rounds)","difficulty":"repeatable","xp":1000,"id":20,"repeatable":true,"skill":"Survival"},
+    {"description":"Win a mini game","difficulty":"easy","xp":100,"id":21,"repeatable":false,"skill":"Survival"},
+    {"description":"Get any buddy","difficulty":"medium","xp":200,"id":22,"repeatable":false,"skill":"Survival"},
+    {"description":"Hold 2 stars at anytime","difficulty":"hard","xp":300,"id":23,"repeatable":false,"skill":"Survival"},
+    {"description":"Attain a star as the result of a chance time","difficulty":"elite","xp":400,"id":24,"repeatable":false,"skill":"Survival"}
+  ],
+  "Farkle": [
+    {"description":"Complete a game (first to 10k points)","difficulty":"repeatable","xp":400,"id":25,"repeatable":true,"skill":"Thieving"},
+    {"description":"Score your first 500 points","difficulty":"easy","xp":100,"id":26,"repeatable":false,"skill":"Thieving"},
+    {"description":"Score an El Classico","difficulty":"medium","xp":200,"id":27,"repeatable":false,"skill":"Thieving"},
+    {"description":"Roll triples of any number","difficulty":"hard","xp":300,"id":28,"repeatable":false,"skill":"Thieving"},
+    {"description":"Roll the straight in one roll and twerk","difficulty":"elite","xp":400,"id":29,"repeatable":false,"skill":"Thieving"}
+  ],
+  "Hammerschlagen": [
+    {"description":"Complete a game (at least 3 people)","difficulty":"repeatable","xp":800,"id":30,"repeatable":true,"skill":"Gathering"},
+    {"description":"Hit the nail","difficulty":"easy","xp":100,"id":31,"repeatable":false,"skill":"Gathering"},
+    {"description":"Hit a back to back","difficulty":"medium","xp":200,"id":32,"repeatable":false,"skill":"Gathering"},
+    {"description":"Use small end of the hammer","difficulty":"hard","xp":300,"id":33,"repeatable":false,"skill":"Gathering"},
+    {"description":"Miss no more than 2 times","difficulty":"elite","xp":400,"id":34,"repeatable":false,"skill":"Gathering"}
+  ],
+  "Mario Kart": [
+    {"description":"Complete a race","difficulty":"repeatable","xp":125,"id":35,"repeatable":true,"skill":"Magic"},
+    {"description":"Complete a race in the top half","difficulty":"easy","xp":100,"id":36,"repeatable":false,"skill":"Magic"},
+    {"description":"Win a race after finishing a lap in 12th place or worse","difficulty":"hard","xp":300,"id":37,"repeatable":false,"skill":"Magic"},
+      {"description":"Win a Knockout Tour","difficulty":"hard","xp":300,"id":371,"repeatable":false,"skill":"Magic"},
+    {"description":"Beat a certain course in under X time (Jake’s record)","difficulty":"elite","xp":400,"id":38,"repeatable":false,"skill":"Magic"}
+  ],
+  "Darts": [
+    {"description":"Complete a game (Cricket or 301, max team size 4)","difficulty":"repeatable","xp":750,"id":39,"repeatable":true,"skill":"Thieving"},
+    {"description":"Score over 10 points on 1 dart","difficulty":"easy","xp":100,"id":40,"repeatable":false,"skill":"Thieving"},
+    {"description":"Score 40 points or more on 1 dart","difficulty":"medium","xp":200,"id":41,"repeatable":false,"skill":"Thieving"},
+    {"description":"Score a bulls eye","difficulty":"hard","xp":300,"id":42,"repeatable":false,"skill":"Thieving"},
+    {"description":"Have all 3 of your throws land in the same number slice","difficulty":"hard","xp":300,"id":421,"repeatable":false,"skill":"Thieving"},
+    {"description":"Score 100 points or more in one round","difficulty":"elite","xp":400,"id":43,"repeatable":false,"skill":"Thieving"}
+  ],
+  "Presidents/Assholes": [
+    {"description":"Play a round (minimum 4 people)","difficulty":"repeatable","xp":125,"id":44,"repeatable":true,"skill":"Thieving"},
+    {"description":"Play doubles of any card","difficulty":"easy","xp":100,"id":45,"repeatable":false,"skill":"Thieving"},
+    {"description":"Become the Asshole","difficulty":"medium","xp":200,"id":46,"repeatable":false,"skill":"Thieving"},
+    {"description":"Finish a set during someone else’s turn","difficulty":"hard","xp":300,"id":47,"repeatable":false,"skill":"Thieving"},
+    {"description":"Become the President","difficulty":"elite","xp":400,"id":48,"repeatable":false,"skill":"Thieving"}
+  ],
+  "Fire time": [
+    {"description":"Sit at fire for 10 minutes","difficulty":"repeatable","xp":150,"id":49,"repeatable":true,"skill":"Gathering"},
+    {"description":"Put a log on the fire","difficulty":"easy","xp":100,"id":50,"repeatable":false,"skill":"Gathering"},
+    {"description":"Eat a smore by the fire","difficulty":"easy","xp":100,"id":51,"repeatable":false,"skill":"Gathering"},
+    {"description":"Tell a spooky campfire story","difficulty":"medium","xp":200,"id":52,"repeatable":false,"skill":"Gathering"},
+    {"description":"Create a catchy campfire song","difficulty":"hard","xp":300,"id":53,"repeatable":false,"skill":"Gathering"}
+  ],
+  "General Drinking": [
+    {"description":"Finish a drink","difficulty":"repeatable","xp":100,"id":54,"repeatable":true,"skill":"Survival"},
+    {"description":"Malort shot","difficulty":"easy","xp":100,"id":55,"repeatable":false,"skill":"Survival"},
+    {"description":"Shotgun a beer","difficulty":"medium","xp":200,"id":56,"repeatable":false,"skill":"Survival"},
+    {"description":"Drink a Wizard Mind Bomb","difficulty":"medium","xp":200,"id":561,"repeatable":false,"skill":"Survival"},
+    {"description":"Invent a new cocktail and have someone else drink ALL of it","difficulty":"hard","xp":300,"id":57,"repeatable":false,"skill":"Survival"},
+    {"description":"Tubthump","difficulty":"hard","xp":300,"id":571,"repeatable":false,"skill":"Survival"},
+    {"description":"Open and drink an entire beer without using your hands","difficulty":"hard","xp":300,"id":572,"repeatable":false,"skill":"Survival"},
+    {"description":"Be the one to summon Father Grogarius","difficulty":"elite","xp":400,"id":58,"repeatable":false,"skill":"Survival"}
+  ],
+  "Hide and Seek": [
+    {"description":"Play a game (minimum 5 people)","difficulty":"repeatable","xp":600,"id":59,"repeatable":true,"skill":"Survival"},
+    {"description":"Don’t be the first found","difficulty":"easy","xp":100,"id":60,"repeatable":false,"skill":"Survival"},
+    {"description":"Find someone within 1 minute of seeking","difficulty":"medium","xp":200,"id":61,"repeatable":false,"skill":"Survival"},
+    {"description":"Move to a different room while hiding (without getting found)","difficulty":"hard","xp":300,"id":62,"repeatable":false,"skill":"Survival"},
+    {"description":"Be the last person found","difficulty":"elite","xp":400,"id":63,"repeatable":false,"skill":"Survival"}
+  ],
+  "Crokinole": [
+    {"description":"Finish a game to 11 (minimum 2 people, max 4)","difficulty":"repeatable","xp":400,"id":64,"repeatable":true,"skill":"Thieving"},
+    {"description":"Make a center shot","difficulty":"easy","xp":100,"id":65,"repeatable":false,"skill":"Thieving"},
+    {"description":"Score at least 30 points in a round","difficulty":"medium","xp":200,"id":66,"repeatable":false,"skill":"Thieving"},
+    {"description":"End a round with at least one disk in each scoring area (center hole, 15 ring, 10 ring, 5 ring)","difficulty":"hard","xp":300,"id":67,"repeatable":false,"skill":"Thieving"},
+    {"description":"Get at least 3 disks in the center hole in a single round","difficulty":"elite","xp":400,"id":68,"repeatable":false,"skill":"Thieving"}
+  ],
+  "Runescape": [
+    {"description":"Kill a goblin west of Varrock","difficulty":"easy","xp":100,"id":69,"repeatable":false,"skill":"Magic"},
+    {"description":"Enter the Wilderness","difficulty":"medium","xp":200,"id":70,"repeatable":false,"skill":"Magic"},
+    {"description":"Have a cow kick you to Lumbridge","difficulty":"hard","xp":300,"id":71,"repeatable":false,"skill":"Magic"},
+    {"description":"Complete a beginner clue scroll","difficulty":"elite","xp":400,"id":72,"repeatable":false,"skill":"Magic"}
+  ],
+  "Miscellania": [
+    {"description":"Watch (and pay attention to) Fesh Pince 1","difficulty":"easy","xp":100,"id":73,"repeatable":false,"skill":"Gathering"},
+    {"description":"Watch (and pay attention to) Fesh Pince 2","difficulty":"easy","xp":100,"id":74,"repeatable":false,"skill":"Gathering"},
+    {"description":"Watch (and pay attention to) Fesh Pince 3","difficulty":"easy","xp":100,"id":75,"repeatable":false,"skill":"Gathering"},
+    {"description":"Create and do your taunt move","difficulty":"easy","xp":100,"id":76,"repeatable":false,"skill":"Combat"},
+    {"description":"Replace a trash bag","difficulty":"medium","xp":200,"id":77,"repeatable":true,"skill":"Gathering"},
+    {"description":"Cleanup after a meal","difficulty":"medium","xp":200,"id":78,"repeatable":true,"skill":"Gathering"},
+    {"description":"Watch (and pay attention to) a movie","difficulty":"hard","xp":300,"id":79,"repeatable":true,"skill":"Gathering"},
+    {"description":"Do a max skill emote on the front porch","difficulty":"elite","xp":400,"id":80,"repeatable":false,"skill":"Survival"}
+  ],
+  "Wario Ware": [
+    {"description":"Finish a game","difficulty":"repeatable","xp":300,"id":81,"repeatable":true,"skill":"Magic"},
+    {"description":"Succeed at any microgame","difficulty":"easy","xp":100,"id":82,"repeatable":false,"skill":"Magic"},
+    {"description":"Give all other players a turtle","difficulty":"medium","xp":200,"id":83,"repeatable":false,"skill":"Magic"},
+    {"description":"Claim a corner comet in Milky Way Delirium","difficulty":"hard","xp":300,"id":84,"repeatable":false,"skill":"Magic"},
+    {"description":">= 90% of the deck in a game of Card e Cards","difficulty":"elite","xp":400,"id":85,"repeatable":false,"skill":"Magic"}
+  ]
 }
