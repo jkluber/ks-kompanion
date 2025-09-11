@@ -7,6 +7,7 @@ const images = {
     medium: require('../../../assets/images/medium-task.png'),
     hard: require('../../../assets/images/hard-task.png'),
     elite: require('../../../assets/images/elite-task.png'),
+    repeatable: require('../../../assets/images/repeatable-task.png')
 };
 
 const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
@@ -34,7 +35,7 @@ const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
                         adjustsFontSizeToFit={true}
                     >   
                         {item.repeatable ? 
-                            `Repeatable: ${item.xp} ${item.skill} Experience, ${khallengePointsByDifficulty(item.difficulty)} Khallenge Points`
+                            `Repeatable: ${item.xp} ${item.skill} Experience`
                             : `${item.xp} ${item.skill} Experience, ${khallengePointsByDifficulty(item.difficulty)} Khallenge Points`}
                     </RunescapeText>
                 </View>
