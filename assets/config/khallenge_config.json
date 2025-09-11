@@ -109,13 +109,13 @@
     {"description":"Complete a beginner clue scroll","difficulty":"elite","xp":400,"id":72,"repeatable":false,"skill":"Magic"}
   ],
   "Miscellania": [
+    {"description":"Replace a trash bag","difficulty":"repeatable","xp":200,"id":77,"repeatable":true,"skill":"Gathering"},
+    {"description":"Cleanup after a meal","difficulty":"repeatable","xp":200,"id":78,"repeatable":true,"skill":"Gathering"},
+    {"description":"Watch (and pay attention to) a movie","difficulty":"repeatable","xp":300,"id":79,"repeatable":true,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) Fesh Pince 1","difficulty":"easy","xp":100,"id":73,"repeatable":false,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) Fesh Pince 2","difficulty":"easy","xp":100,"id":74,"repeatable":false,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) Fesh Pince 3","difficulty":"easy","xp":100,"id":75,"repeatable":false,"skill":"Gathering"},
     {"description":"Create and do your taunt move","difficulty":"easy","xp":100,"id":76,"repeatable":false,"skill":"Combat"},
-    {"description":"Replace a trash bag","difficulty":"medium","xp":200,"id":77,"repeatable":true,"skill":"Gathering"},
-    {"description":"Cleanup after a meal","difficulty":"medium","xp":200,"id":78,"repeatable":true,"skill":"Gathering"},
-    {"description":"Watch (and pay attention to) a movie","difficulty":"hard","xp":300,"id":79,"repeatable":true,"skill":"Gathering"},
     {"description":"Do a max skill emote on the front porch","difficulty":"elite","xp":400,"id":80,"repeatable":false,"skill":"Survival"}
   ],
   "Wario Ware": [
