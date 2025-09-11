@@ -1,6 +1,6 @@
 import { TouchableOpacity, View, Image, StyleSheet } from 'react-native';
 import RunescapeText from './RunescapeText';
-import { kompleteKhallenge } from '../utils/KhallengeUtils';
+import { khallengePointsByDifficulty } from '../utils/KhallengeUtils';
 
 const images = {
     easy: require('../../../assets/images/easy-task.png'),
@@ -32,8 +32,10 @@ const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
                             marginTop: 5,
                         }}
                         adjustsFontSizeToFit={true}
-                    >
-                        Reward: {item.xp} {item.skill} Experience
+                    >   
+                        {item.repeatable ? 
+                            `Repeatable: ${item.xp} ${item.skill} Experience, ${khallengePointsByDifficulty(item.difficulty)} Khallenge Points`
+                            : `${item.xp} ${item.skill} Experience, ${khallengePointsByDifficulty(item.difficulty)} Khallenge Points`}
                     </RunescapeText>
                 </View>
             </View>
