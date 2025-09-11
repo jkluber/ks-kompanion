@@ -2,7 +2,7 @@ import * as Application from 'expo-application';
 import * as Device from 'expo-device';
 
 export const checkNewUser = async(deviceId, userName) => {
-    const result = sendRequest("POST", JSON.stringify({
+    const result = await sendRequest("POST", JSON.stringify({
         deviceId: deviceId,
         userName: userName,
         method: "newUser"
@@ -11,7 +11,7 @@ export const checkNewUser = async(deviceId, userName) => {
 };
 
 export const rollRandomEvent = async(deviceId) => {
-    const result = sendRequest("POST", JSON.stringify({
+    const result = await sendRequest("POST", JSON.stringify({
         deviceId: deviceId,
         method: "randomEvent"
     }));
@@ -48,7 +48,7 @@ export const fetchDeviceId = async() => {
 };
 
 export const sendRequest = async(method, body) => {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwsFJYvi8WQF67LyEUWROhif3w45JWcS3hSivvx_FSKwPrC15Y5mHVxj5W0g8Hhve4/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwJm0Gmj31fK14c9wzI0ZJuZujNgCcKTTo1KkFo_yCakyvDxAT2-hQTWnc4EUqvVPU/exec", {
         method: method,
         body: body
     });

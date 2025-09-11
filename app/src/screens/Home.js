@@ -32,7 +32,7 @@ const Home = () => {
 
     async function handleRollRandomEvent() {
         let deviceId = await fetchDeviceId();
-        const result = rollRandomEvent(deviceId);
+        const result = await rollRandomEvent(deviceId);
         setRandomEventResult(result);
         setRandomEventModalVisible(true);
     }
