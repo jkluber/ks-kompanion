@@ -9,16 +9,10 @@ const images = {
     elite: require('../../../assets/images/elite-task.png'),
 };
 
-const handleItemPress = (item, isComplete) => {
-    let operator = isComplete ? "+" : "-";
-    kompleteKhallenge(item.difficulty, item.skill, item.xp, operator, item.id);
-}
-
 const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
     return (
         <TouchableOpacity onPress={() => {
             onToggle();
-            handleItemPress(item, !isComplete);
         }}>
             <View style={[styles.container, {backgroundColor: index % 2 === 0 ? 'rgb(90, 83, 72)' : 'rgb(79, 69, 59)'}]}>
                 <Image source={images[item.difficulty]} style={styles.image}/>
@@ -39,7 +33,7 @@ const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
                         }}
                         adjustsFontSizeToFit={true}
                     >
-                        Reward: {item.xp} Experience
+                        Reward: {item.xp} {item.skill} Experience
                     </RunescapeText>
                 </View>
             </View>

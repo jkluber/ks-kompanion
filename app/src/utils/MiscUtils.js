@@ -48,7 +48,7 @@ export const fetchDeviceId = async() => {
 };
 
 export const sendRequest = async(method, body) => {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxteihQqA0EI4_TXeVPDi94GfkD7-v4RcdVa43Rahu2bL30E5q_OmDgbpV1P4C_5ks/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwsFJYvi8WQF67LyEUWROhif3w45JWcS3hSivvx_FSKwPrC15Y5mHVxj5W0g8Hhve4/exec", {
         method: method,
         body: body
     });
