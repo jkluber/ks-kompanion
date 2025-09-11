@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
-import * as Application from 'expo-application';
-import * as Device from 'expo-device';
-import { checkNewUser, rollRandomEvent } from '../utils/MiscUtils';
+import { checkNewUser, fetchDeviceId, rollRandomEvent } from '../utils/MiscUtils';
 import DefaultModal from '../components/DefaultModal';
 import RunescapeText from '../components/RunescapeText';
 
@@ -21,14 +19,6 @@ const Home = () => {
         }
         checkDeviceId();
     }, []);
-
-    async function fetchDeviceId() {
-        if ('iOS' === Device.osName) {
-            return await Application.getIosIdForVendorAsync();
-        } else {
-            return Application.getAndroidId();
-        }
-    }
 
     async function onSubmit() {
         if (username.trim()) {

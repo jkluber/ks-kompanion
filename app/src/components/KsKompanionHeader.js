@@ -10,7 +10,7 @@ const KsKompanionHeader = ({ text, ...props }) => {
                     {text}
                 </RunescapeText>
             </ImageBackground>           
-        </View>
+        </SafeAreaView>
     );
 };
 

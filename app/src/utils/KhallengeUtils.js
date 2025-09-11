@@ -1,47 +1,42 @@
-export const kompleteKhallenge = (difficulty) => {
-    //apply xp to skill once me and 2shoes figure out saves
-    //apply kp to user once me and 2shoes figure out saves
+import { modifyXP, fetchDeviceId, sendRequest } from "./MiscUtils";
+
+export const kompleteKhallenge = async(difficulty, skill, xp, operator, id) => {
+    let deviceId = await fetchDeviceId();
+    modifyXP(deviceId, skill, xp, operator);
+    modifyKhallengePoints(deviceId, difficulty, operator, id);
     rollKhallengePet(difficulty);
 };
 
-export const xpByDifficulty = (difficulty) => {
-    switch (difficulty) {
-        case "easy":
-            return 100;
-            break;
-        case "medium":
-            return 200;
-            break;
-        case "hard":
-            return 300;
-            break;
-        case "elite":
-            return 400;
-            break;
-    }
+export const modifyKhallengePoints = async(deviceId, difficulty, operator, id) => {
+    console.log(id);
+    const result = sendRequest("POST", JSON.stringify({
+        deviceId: deviceId,
+        points: khallengePointsByDifficulty(difficulty),
+        operator: operator,
+        method: "modifyKhallengePoints",
+        id: id
+    }));
+    return result.updated;
 };
 
 export const khallengePointsByDifficulty = (difficulty) => {
     switch (difficulty) {
         case "easy":
             return 1;
-            break;
         case "medium":
             return 2;
-            break;
         case "hard":
             return 3;
-            break;
         case "elite":
             return 4;
-            break;
+        default:
+            return 0;
     }
-}
+};
 
 export const rollKhallengePet = () => {
     const roll = Math.floor(Math.random() * 1000);
-    console.log(roll);
     if (999 == roll) {
         console.log("You rolled a pet!");
     }
-}
+};

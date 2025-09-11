@@ -25,6 +25,7 @@ const skills={
 }
 
 const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the entire screen
+const CIRCLE_SIZE = 10;
 
 const Skills = () => {
 
