@@ -36,7 +36,7 @@ const KhallengeItem = ({ item, index, isComplete, onToggle}) => {
                     >   
                         {item.repeatable ? 
                             `Repeatable: ${item.xp} ${item.skill} Experience`
-                            : `${item.xp} ${item.skill} Experience, ${khallengePointsByDifficulty(item.difficulty)} Khallenge Points`}
+                            : `${item.xp} ${item.skill} Experience, ${khallengePointsByDifficulty(item.difficulty)} Khallenge Points, ${khallengePointsByDifficulty(item.difficulty)}m GP`}
                     </RunescapeText>
                 </View>
             </View>

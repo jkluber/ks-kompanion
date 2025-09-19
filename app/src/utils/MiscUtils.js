@@ -50,7 +50,7 @@ export const rollRandomEvent = async(deviceId) => {
 };
 
 export const modifyXP = async(deviceId, skill, xp, operator) => {
-    return sendRequest("POST", JSON.stringify({
+    return await sendRequest("POST", JSON.stringify({
         deviceId: deviceId,
         method: "modifyXP",
         skill: skill,
