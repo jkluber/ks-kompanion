@@ -24,11 +24,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     modalBox: {
-        backgroundColor: "silver",
+        backgroundColor: "#181716",
         width: "80%",
         maxWidth: 350,
         padding: 20,
         borderRadius: 10,
+        alignItems: "center",
+        justifyContent: "center",
   }
 });
 

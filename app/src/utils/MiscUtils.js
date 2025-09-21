@@ -1,5 +1,8 @@
 import * as Application from 'expo-application';
 import * as Device from 'expo-device';
+import { randoms } from '../../../assets/config/RandomEvents.js'
+import { View, Image, StyleSheet } from 'react-native';
+import RunescapeText from '../components/RunescapeText';
 
 export const checkNewUser = async(deviceId, userName) => {
     const result = await sendRequest("POST", JSON.stringify({
@@ -22,19 +25,39 @@ export const rollRandomEvent = async(deviceId) => {
             return "You rolled a mega random!!!!"
         } else {
             let roll = Math.floor(Math.random() * 20);
-            return "You rolled this number: " + roll
+            if (randoms[roll].reward != null) {
+                await modifyField(deviceId, randoms[roll].reward, randoms[roll].unit, "+");
+            }
+            return (
+                <View style={styles.randomEventView}>
+                    <RunescapeText
+                        font="RunescapeBold"
+                        fontSize={24}
+                        style={styles.title}>
+                        {randoms[roll].title}
+                    </RunescapeText>
+                    <RunescapeText
+                        fontSize={22}
+                        style={styles.description}>
+                        {randoms[roll].description}
+                    </RunescapeText>
+                    <Image
+                        style={styles.image}
+                        source={randoms[roll].image}/>
+                </View>
+            );
         }
     } else {
-        return "Zero doin' right now, Kong-dude!"
+        return "Zero doin' right now, Kong-dude!";
     }
 };
 
-export const modifyXP = async(deviceId, skill, xp, operator) => {
-    return sendRequest("POST", JSON.stringify({
+export const modifyField = async(deviceId, field, unit, operator) => {
+    return await sendRequest("POST", JSON.stringify({
         deviceId: deviceId,
-        method: "modifyXP",
-        skill: skill,
-        xp: xp,
+        method: "modifyField",
+        field: field,
+        unit, unit,
         operator: operator
     }));
 };
@@ -48,10 +71,32 @@ export const fetchDeviceId = async() => {
 };
 
 export const sendRequest = async(method, body) => {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwJm0Gmj31fK14c9wzI0ZJuZujNgCcKTTo1KkFo_yCakyvDxAT2-hQTWnc4EUqvVPU/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzqM0ML9-byZgsWXcmSUqmiSrYpeuN24WOGL697Z-aDLcxYNBE928bf8vPMt-YQqoA/exec", {
         method: method,
         body: body
     });
     const result = await response.json();
     return result;
 }
+
+const styles = StyleSheet.create({
+    randomEventView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 20
+    },
+    title: {
+        textAlign: "center",
+        marginBottom: 24
+    },
+    description: {
+        fontWeight: "bold",
+        marginBottom: 10
+    },
+    image: {
+        width: 120,
+        height: 120,
+        resizeMode: "contain"
+    }
+});
