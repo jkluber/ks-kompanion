@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
-import { checkNewUser, fetchDeviceId, rollRandomEvent, useXpLamp } from '../utils/MiscUtils';
+import { checkNewUser, fetchDeviceId, rollRandomEvent, useXpLamp, processCode } from '../utils/MiscUtils';
 import DefaultModal from '../components/DefaultModal';
 import RunescapeText from '../components/RunescapeText';
 import { SKILLS } from './Skills';
@@ -9,9 +9,12 @@ const Home = () => {
 
     const [newUser, setNewUser] = useState(false);
     const [username, setUsername] = useState('');
+    const [code, setCode] = useState(null);
+    const [codeResult, setCodeResult] = useState(null);
     const [randomEventResult, setRandomEventResult] = useState('');
     const [randomEventModalVisible, setRandomEventModalVisible] = useState(false);
     const [xpLampModalVisible, setXpLampModalVisible] = useState(false);
+    const [codeModalVisible, setCodeModalVisible] = useState(false);
     const [lampType, setLampType] = useState(null);
     const [selectedSkill, setSelectedSkill] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -98,14 +101,12 @@ const Home = () => {
                 }}>
                     <Text style={styles.closeButtonText}>X</Text>
                 </TouchableOpacity>
-
                 <RunescapeText
                     font="RunescapeBold"
                     fontSize={20}
                     style={{ textAlign: 'center', marginBottom: 24 }}>
                     Which skill would you like to use your lamp on?
                 </RunescapeText>
-                
                 <View style={styles.skillRow}>
                     {SKILLS.map(skill => (
                         <TouchableOpacity
@@ -120,11 +121,50 @@ const Home = () => {
                         </TouchableOpacity>
                     ))}
                 </View>
-
                 <TouchableOpacity style={[styles.submit, (!selectedSkill || loading) && {opacity: 0.6}]} onPress={applyLamp} disabled={!selectedSkill || loading}>
                     <Text style={{ color: 'white' }}>
                         {loading ? "Applying XP..." : "Submit"}
                     </Text>
+                </TouchableOpacity>
+            </DefaultModal>
+
+            <DefaultModal visible={codeModalVisible}>
+                <TouchableOpacity style={styles.closeButton} onPress={() => {
+                    setCode(null);
+                    setCodeResult(null);
+                    setCodeModalVisible(false);
+                }}>
+                    <Text style={styles.closeButtonText}>X</Text>
+                </TouchableOpacity>
+                <RunescapeText
+                    font='RunescapeBold'
+                    fontSize={24}
+                    style={{ 
+                        textAlign: 'center',
+                        marginBottom: 24
+                    }}>
+                    Enter a code:
+                </RunescapeText>
+                <TextInput 
+                    style={styles.input}
+                    placeholder="Code"
+                    placeholderTextColor="#999"
+                    onChangeText={setCode}
+                    multiline={true}
+                    textAlignVertical='top'/>
+                {codeResult && (
+                    <RunescapeText
+                        font='RunescapeBold'
+                        fontSize={16}
+                        style={{ 
+                            textAlign: 'center',
+                            paddingTop: 30,
+                        }}>
+                        {codeResult}
+                    </RunescapeText>
+                )}
+                <TouchableOpacity style={styles.submit} onPress={() => {setCodeResult(processCode(code));}}>
+                    <Text>Submit</Text>
                 </TouchableOpacity>
             </DefaultModal>
 
@@ -144,7 +184,7 @@ const Home = () => {
                                 Roll random event
                             </RunescapeText>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 48}]}>
+                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 48}]} onPress={() => {setCodeModalVisible(true);}}>
                             <Image source={require('../../../assets/images/GnomeChild.png')} style={styles.icon} resizeMode="contain"/>
                             <RunescapeText
                                 font='RunescapeBold'
@@ -210,7 +250,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 8,
         paddingHorizontal: 10,
-        color: 'black',
+        paddingVertical: 8,
+        color: 'white',
+        width: "100%",
+        maxWidth: 400
     },
     submit: {
         backgroundColor: '#007AFF',

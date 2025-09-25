@@ -89,6 +89,15 @@ export const useXpLamp = async(deviceId, lampType, skill) => {
     }
 };
 
+export const processCode = async(code) => {
+    if ("FGdiedLOL420" === code) {
+        return "This is the code for Father Grogarius' quest, which is in development!";
+    } else if ("Test" === code) {
+        return "Thank you for testing";
+    }
+    return "No results."
+}
+
 const styles = StyleSheet.create({
     randomEventView: {
         flex: 1,
