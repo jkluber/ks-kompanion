@@ -1,28 +1,13 @@
 import {SafeAreaView, View, FlatList, Text, StyleSheet, Image} from 'react-native';
 import SkillContainer from '../components/SkillContainer';
 
-const skills={
-    combat: {
-        level: 99,
-        experience: 0,
-        icon: require('../../../assets/icons/combat.png')
-    },
-    magic: {
-        level: 23,
-        experience: 0,
-        icon: require('../../../assets/icons/magic.png')
-    },
-    crafting: {
-        level: 4,
-        experience: 0,
-        icon: require('../../../assets/icons/crafting.png')
-    },
-    fishing: {
-        level: 7,
-        experience: 0,
-        icon: require('../../../assets/icons/fishing.png')
-    }
-}
+export const SKILLS = [
+    { name: 'Combat', icon: require('../../../assets/icons/combat.png') },
+    { name: 'Magic', icon: require('../../../assets/icons/magic.png') },
+    { name: 'Thieving', icon: require('../../../assets/icons/thieving.png') },
+    { name: 'Gathering', icon: require('../../../assets/icons/fishing.png') },
+    { name: 'Survival', icon: require('../../../assets/icons/survival.png') }
+];
 
 const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the entire screen
 const CIRCLE_SIZE = 10;
@@ -31,7 +16,7 @@ const Skills = () => {
 
     // Usage in your FlatList renderItem:
     const renderSkill = (item) => {
-        const skill = skills[item];
+        const skill = SKILLS[item];
         return (
             <SkillContainer skill={skill}>
             </SkillContainer>
