@@ -79,10 +79,50 @@ const Home = () => {
                                 fontSize={16}
                                 style={{ 
                                     textAlign: 'center',
+                                    marginTop: 24,
                                     marginBottom: 24
                                 }}>
                                 Roll random event
-                        </RunescapeText>
+                            </RunescapeText>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 48}]}>
+                            <Image source={require('../../../assets/images/GnomeChild.png')} style={styles.icon} resizeMode="contain"/>
+                            <RunescapeText
+                                font='RunescapeBold'
+                                fontSize={16}
+                                style={{ 
+                                    textAlign: 'center',
+                                    marginTop: 24,
+                                    marginBottom: 24
+                                }}>
+                                Enter a code
+                            </RunescapeText>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.quadrant, {paddingLeft: 40}]}>
+                            <Image source={require('../../../assets/images/SmallLamp.png')} style={styles.icon} resizeMode="contain"/>
+                            <RunescapeText
+                                font='RunescapeBold'
+                                fontSize={16}
+                                style={{ 
+                                    textAlign: 'center',
+                                    marginTop: 24,
+                                    marginBottom: 24
+                                }}>
+                                Use a Small XP Lamp
+                            </RunescapeText>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 40}]}>
+                            <Image source={require('../../../assets/images/LargeLamp.png')} style={styles.icon} resizeMode="contain"/>
+                            <RunescapeText
+                                font='RunescapeBold'
+                                fontSize={16}
+                                style={{ 
+                                    textAlign: 'center',
+                                    marginTop: 24,
+                                    marginBottom: 24
+                                }}>
+                                Use a Large XP Lamp
+                            </RunescapeText>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
@@ -127,8 +167,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     icon: {
-        width: 200,
-        height: 200
+        width: 160,
+        height: 160
     }
 })
 
