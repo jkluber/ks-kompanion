@@ -44,10 +44,12 @@ const Skills = () => {
                         whatDoIWantToday: "skills"
                     }));
                     console.log('Fetched skills data:', result);
-                    skills.combat.experience = result[0][0];
-                    skills.magic.experience = result[0][1];
-                    skills.crafting.experience = result[0][2];
-                    skills.fishing.experience = result[0][3];
+                    setSkills({
+                        combat: { ...skills.combat, experience: result[0][0] },
+                        magic: { ...skills.magic, experience: result[0][1] },
+                        crafting: { ...skills.crafting, experience: result[0][2] },
+                        fishing: { ...skills.fishing, experience: result[0][3] },
+                    });
                 } catch (err) {
                     console.error(err);
                 } finally {
