@@ -4,6 +4,14 @@ import { useFocusEffect } from '@react-navigation/native';
 import {useCallback, useState} from 'react';
 import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
 
+export const SKILLS = [
+    { name: 'Combat', icon: require('../../../assets/icons/combat.png') },
+    { name: 'Magic', icon: require('../../../assets/icons/magic.png') },
+    { name: 'Thieving', icon: require('../../../assets/icons/thieving.png') },
+    { name: 'Gathering', icon: require('../../../assets/icons/fishing.png') },
+    { name: 'Survival', icon: require('../../../assets/icons/survival.png') }
+];
+
 const initialSkills={
     combat: {
         experience: 0,
@@ -13,15 +21,20 @@ const initialSkills={
         experience: 0,
         icon: require('../../../assets/icons/magic.png')
     },
-    crafting: {
+    thieving: {
         experience: 0,
-        icon: require('../../../assets/icons/crafting.png')
+        icon: require('../../../assets/icons/thieving.png')
     },
-    fishing: {
+    gathering: {
         experience: 0,
         icon: require('../../../assets/icons/fishing.png')
+    },
+    survival: {
+        experience: 0,
+        icon: require('../../../assets/icons/survival.png')
     }
 }
+
 
 const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the entire screen
 
@@ -37,7 +50,6 @@ const Skills = () => {
                 try {
                     console.log('Fetching skills data...');
                     let deviceId = await fetchDeviceId();
-                    console.log('Device ID:', deviceId);
                     const result = await sendRequest("POST", JSON.stringify({
                         deviceId: deviceId,
                         method: "getPlayerData",
@@ -47,8 +59,9 @@ const Skills = () => {
                     setSkills({
                         combat: { ...skills.combat, experience: result[0][0] },
                         magic: { ...skills.magic, experience: result[0][1] },
-                        crafting: { ...skills.crafting, experience: result[0][2] },
-                        fishing: { ...skills.fishing, experience: result[0][3] },
+                        survival: { ...skills.survival, experience: result[0][2] },
+                        gathering: { ...skills.gathering, experience: result[0][3] },
+                        thieving: { ...skills.thieving, experience: result[0][4] },
                     });
                 } catch (err) {
                     console.error(err);
