@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
-import { checkNewUser, fetchDeviceId, rollRandomEvent, useXpLamp, processCode } from '../utils/MiscUtils';
+import { checkNewUser, fetchDeviceId, rollRandomEvent, processCode } from '../utils/MiscUtils';
+import { useXpLamp } from '../utils/SkillUtils';
 import DefaultModal from '../components/DefaultModal';
 import RunescapeText from '../components/RunescapeText';
 import { SKILLS } from './Skills';

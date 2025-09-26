@@ -79,16 +79,6 @@ export const sendRequest = async(method, body) => {
     return result;
 }
 
-export const useXpLamp = async(deviceId, lampType, skill) => {
-    if ("small" === lampType) {
-        await modifyField(deviceId, skill, 100, "+");
-        await modifyField(deviceId, "smalllamp", 1, "-");
-    } else {
-        await modifyField(deviceId, skill, 500, "+");
-        await modifyField(deviceId, "largelamp", 1, "-");
-    }
-};
-
 export const processCode = async(code) => {
     if ("FGdiedLOL420" === code) {
         return "This is the code for Father Grogarius' quest, which is in development!";
