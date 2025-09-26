@@ -84,7 +84,7 @@ const SkillContainer = ({ skill }) => {
                         setTextHeight(e.nativeEvent.layout.height);
                     }}
                 >
-                    {skill.level}
+                    {skill.experience}
                 </RunescapeText>
                 <RunescapeText
                     style={{
@@ -98,7 +98,7 @@ const SkillContainer = ({ skill }) => {
                         ]
                     }}
                 >
-                    {skill.level}
+                    20
                 </RunescapeText>
                 <Svg
                     width={60}
