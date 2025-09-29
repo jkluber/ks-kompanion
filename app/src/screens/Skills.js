@@ -1,8 +1,11 @@
-import {SafeAreaView, View, FlatList, Text, StyleSheet, Image, ActivityIndicator} from 'react-native';
+import {SafeAreaView, View, FlatList, Text, StyleSheet, Modal, ActivityIndicator, Pressable} from 'react-native';
 import SkillContainer from '../components/SkillContainer';
 import { useFocusEffect } from '@react-navigation/native';
 import {useCallback, useState} from 'react';
 import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
+import { SKILL_UNLOCKS } from '../../../assets/config/SkillUnlocks'; 
+import DefaultModal from '../components/DefaultModal';
+import RunescapeText from '../components/RunescapeText';
 
 export const SKILLS = [
     { name: 'Combat', icon: require('../../../assets/icons/combat.png') },
@@ -42,6 +45,9 @@ const Skills = () => {
 
     const [skills, setSkills] = useState(initialSkills);
     const [loading, setLoading] = useState(false);
+    const [skillModalVisible, setSkillModalVisible] = useState(false);
+    const [selectedSkill, setSelectedSkill] = useState(null);
+
 
     useFocusEffect(
         useCallback(() => {
@@ -77,9 +83,16 @@ const Skills = () => {
     const renderSkill = (item) => {
         const skill = skills[item];
         return (
-            <SkillContainer skill={skill}>
-            </SkillContainer>
+            <SkillContainer 
+                skill={skill}
+                onPress={() => handleSkillPress(item)}
+            />
         );
+    };
+
+    const handleSkillPress = (skill) => {
+        setSelectedSkill(skill);
+        setSkillModalVisible(true);
     };
 
     return (
@@ -93,6 +106,48 @@ const Skills = () => {
                 contentContainerStyle={{ alignItems: 'center', padding: 20 }} // Center items in the FlatList
             >
             </FlatList>
+            <DefaultModal
+                visible={skillModalVisible}
+                onRequestClose={() => setSkillModalVisible(false)}
+            >
+                {selectedSkill && (
+                    <>
+                    <RunescapeText
+                        font="RunescapeBold"
+                        fontSize={24}
+                        style={{marginBottom: 10}}
+                    >
+                        {selectedSkill.charAt(0).toUpperCase() + selectedSkill.slice(1)}
+                    </RunescapeText>
+                    <View style={{ width: "100%", alignItems: "flex-start" }}>
+                        {SKILL_UNLOCKS[selectedSkill].map((unlock, idx) => (
+                            <View key={idx} style={{ marginBottom: 20 }}>
+                            <RunescapeText
+                                font="RunescapeThin"
+                                fontSize={18}
+                                style={{ textAlign: "left", marginBottom: 2, color: "white" }}
+                            >
+                                Lvl {unlock.level} – {unlock.name}
+                            </RunescapeText>
+                            <RunescapeText
+                                font="RunescapeThin"
+                                fontSize={18}
+                                style={{ textAlign: "left", marginBottom: 10, color: "white" }}
+                            >
+                                {unlock.description}
+                            </RunescapeText>
+                            </View>
+                        ))}
+                    </View>
+                    </>
+                )}
+
+                <Pressable onPress={() => setSkillModalVisible(false)}>
+                    <Text style={{ color: "blue", textAlign: "center", marginTop: 20 }}>
+                    Close
+                    </Text>
+                </Pressable>
+            </DefaultModal>
             {loading && (
                 <View
                     style={{
