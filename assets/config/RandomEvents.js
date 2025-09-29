@@ -1,4 +1,4 @@
-export const randoms = {
+export const RANDOMS = {
     0: {
         title: "Rick Turpentine",
         description: "Atone for your sins! Give the poorest player 5m. If you are the poorest player, receive 5m.",

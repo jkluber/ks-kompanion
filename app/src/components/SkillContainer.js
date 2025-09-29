@@ -27,7 +27,6 @@ function getCutoutPath(w, h, r) {
 
 // ChatGPT wrote the SVG stuff i have no clue how it works
 const SkillContainer = ({ skill }) => {
-    console.log('SkillContainer skill:', skill);
     const [textWidth, setTextWidth] = useState(0);
     const [textHeight, setTextHeight] = useState(0);
     return (
