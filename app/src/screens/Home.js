@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
-import { checkNewUser, fetchDeviceId, rollRandomEvent, useXpLamp } from '../utils/MiscUtils';
+import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image, ActivityIndicator} from 'react-native';
+import { checkNewUser, fetchDeviceId, rollRandomEvent, processCode, sendRequest } from '../utils/MiscUtils';
+import { useXpLamp } from '../utils/SkillUtils';
 import DefaultModal from '../components/DefaultModal';
 import RunescapeText from '../components/RunescapeText';
 import { SKILLS } from './Skills';
@@ -9,9 +10,13 @@ const Home = () => {
 
     const [newUser, setNewUser] = useState(false);
     const [username, setUsername] = useState('');
+    const [code, setCode] = useState(null);
+    const [codeResult, setCodeResult] = useState(null);
     const [randomEventResult, setRandomEventResult] = useState('');
     const [randomEventModalVisible, setRandomEventModalVisible] = useState(false);
+    const [noLampModalVisible, setNoLampModalVisible] = useState(false);
     const [xpLampModalVisible, setXpLampModalVisible] = useState(false);
+    const [codeModalVisible, setCodeModalVisible] = useState(false);
     const [lampType, setLampType] = useState(null);
     const [selectedSkill, setSelectedSkill] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -36,8 +41,10 @@ const Home = () => {
     }
 
     async function handleRollRandomEvent() {
+        setLoading(true);
         let deviceId = await fetchDeviceId();
         const result = await rollRandomEvent(deviceId);
+        setLoading(false);
         setRandomEventResult(result);
         setRandomEventModalVisible(true);
     }
@@ -90,6 +97,18 @@ const Home = () => {
                 </TouchableOpacity>
             </DefaultModal>
 
+            <DefaultModal visible={noLampModalVisible}>
+                <RunescapeText
+                    font="RunescapeBold"
+                    fontSize={20}
+                    style={{ textAlign: 'center', marginBottom: 24 }}>
+                    You don't have any of those!
+                </RunescapeText>
+                <TouchableOpacity style={styles.submit} onPress={() => setNoLampModalVisible(false)}>
+                    <Text style={{ color: 'white' }}>Close</Text>
+                </TouchableOpacity>
+            </DefaultModal>
+
             <DefaultModal visible={xpLampModalVisible}>
                 <TouchableOpacity style={styles.closeButton} onPress={() => {
                     setXpLampModalVisible(false);
@@ -98,14 +117,12 @@ const Home = () => {
                 }}>
                     <Text style={styles.closeButtonText}>X</Text>
                 </TouchableOpacity>
-
                 <RunescapeText
                     font="RunescapeBold"
                     fontSize={20}
                     style={{ textAlign: 'center', marginBottom: 24 }}>
                     Which skill would you like to use your lamp on?
                 </RunescapeText>
-                
                 <View style={styles.skillRow}>
                     {SKILLS.map(skill => (
                         <TouchableOpacity
@@ -120,7 +137,6 @@ const Home = () => {
                         </TouchableOpacity>
                     ))}
                 </View>
-
                 <TouchableOpacity style={[styles.submit, (!selectedSkill || loading) && {opacity: 0.6}]} onPress={applyLamp} disabled={!selectedSkill || loading}>
                     <Text style={{ color: 'white' }}>
                         {loading ? "Applying XP..." : "Submit"}
@@ -128,11 +144,49 @@ const Home = () => {
                 </TouchableOpacity>
             </DefaultModal>
 
+            <DefaultModal visible={codeModalVisible}>
+                <TouchableOpacity style={styles.closeButton} onPress={() => {
+                    setCode(null);
+                    setCodeResult(null);
+                    setCodeModalVisible(false);
+                }}>
+                    <Text style={styles.closeButtonText}>X</Text>
+                </TouchableOpacity>
+                <RunescapeText
+                    font='RunescapeBold'
+                    fontSize={24}
+                    style={{ 
+                        textAlign: 'center',
+                        marginBottom: 24
+                    }}>
+                    Enter a search term:
+                </RunescapeText>
+                <TextInput 
+                    style={styles.input}
+                    onChangeText={setCode}
+                    multiline={true}
+                    textAlignVertical='top'/>
+                {codeResult && (
+                    <RunescapeText
+                        font='RunescapeBold'
+                        fontSize={16}
+                        style={{ 
+                            textAlign: 'center',
+                            paddingTop: 30,
+                        }}>
+                        {codeResult}
+                    </RunescapeText>
+                )}
+                <TouchableOpacity style={styles.submit} onPress={() => {setCodeResult(processCode(code));}}>
+                    <Text>Submit</Text>
+                </TouchableOpacity>
+            </DefaultModal>
+
             <SafeAreaView style={styles.container}>
                 <ImageBackground source={require("../../../assets/images/background.png")} style={styles.background}>
                     <View style={styles.grid}>
                         <TouchableOpacity style={[styles.quadrant, {paddingLeft: 24}]} onPress={handleRollRandomEvent}>
-                            <Image source={require('../../../assets/images/genie.png')} style={styles.icon} resizeMode="contain"/>
+                            <Image source={require('../../../assets/images/GenieRandom.png')} style={styles.icon} resizeMode="contain"/>
                             <RunescapeText
                                 font='RunescapeBold'
                                 fontSize={16}
@@ -144,7 +198,7 @@ const Home = () => {
                                 Roll random event
                             </RunescapeText>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 48}]}>
+                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 24}]} onPress={() => {setCodeModalVisible(true);}}>
                             <Image source={require('../../../assets/images/GnomeChild.png')} style={styles.icon} resizeMode="contain"/>
                             <RunescapeText
                                 font='RunescapeBold'
@@ -154,12 +208,24 @@ const Home = () => {
                                     marginTop: 24,
                                     marginBottom: 24
                                 }}>
-                                Enter a code
+                                Klubscroll Archive
                             </RunescapeText>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.quadrant, {paddingLeft: 40}]} onPress={() => {
-                            setXpLampModalVisible(true);
-                            setLampType("small");
+                        <TouchableOpacity style={[styles.quadrant, {paddingLeft: 40}]} onPress={async() => {
+                            setLoading(true);
+                            let deviceId = await fetchDeviceId();
+                            const result = await sendRequest("POST", JSON.stringify({
+                                                    deviceId: deviceId,
+                                                    method: "getPlayerData",
+                                                    whatDoIWantToday: "smallLamp"
+                                                }));
+                            setLoading(false);
+                            if (result > 0) {
+                                setXpLampModalVisible(true);
+                                setLampType("small");
+                            } else {
+                                setNoLampModalVisible(true);
+                            }
                         }}>
                             <Image source={require('../../../assets/images/SmallLamp.png')} style={styles.icon} resizeMode="contain"/>
                             <RunescapeText
@@ -173,9 +239,21 @@ const Home = () => {
                                 Use a Small XP Lamp
                             </RunescapeText>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 40}]} onPress={() => {
-                            setXpLampModalVisible(true);
-                            setLampType("large");
+                        <TouchableOpacity style={[styles.quadrant, {paddingRight: 40}]} onPress={async() => {
+                            setLoading(true);
+                            let deviceId = await fetchDeviceId();
+                            const result = await sendRequest("POST", JSON.stringify({
+                                                    deviceId: deviceId,
+                                                    method: "getPlayerData",
+                                                    whatDoIWantToday: "largeLamp"
+                                                }));
+                            setLoading(false);
+                            if (result > 0) {
+                                setXpLampModalVisible(true);
+                                setLampType("large");
+                            } else {
+                                setNoLampModalVisible(true);
+                            }
                         }}>
                             <Image source={require('../../../assets/images/LargeLamp.png')} style={styles.icon} resizeMode="contain"/>
                             <RunescapeText
@@ -191,6 +269,19 @@ const Home = () => {
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
+                {loading && (
+                    <View
+                        style={{
+                            position: "absolute",
+                            top: 0, left: 0, right: 0, bottom: 0,
+                            backgroundColor: "rgba(0,0,0,0.4)",
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}
+                    >
+                        <ActivityIndicator size="large" color="#fff"/>
+                    </View>
+                )}
             </SafeAreaView>
          </>
     );
@@ -210,7 +301,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 8,
         paddingHorizontal: 10,
-        color: 'black',
+        paddingVertical: 8,
+        color: 'white',
+        width: "100%",
+        maxWidth: 400
     },
     submit: {
         backgroundColor: '#007AFF',
@@ -232,8 +326,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     icon: {
-        width: 160,
-        height: 160
+        width: 140,
+        height: 140
     },
     skillRow: {
         flexDirection: 'row',

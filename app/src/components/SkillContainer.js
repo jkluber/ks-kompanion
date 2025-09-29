@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, Dimensions, Image } from 'react-native';
 import Svg, { Path, Rect, Circle, Defs, Mask, Line } from 'react-native-svg';
-import RunescapeText from './RunescapeText'; // Adjust the path as necessary
+import RunescapeText from './RunescapeText';
+import { getLevelFromXp } from '../utils/SkillUtils';
 
 const { width } = Dimensions.get('window');
 const CONTAINER_WIDTH = width * .4;
@@ -26,7 +27,6 @@ function getCutoutPath(w, h, r) {
 
 // ChatGPT wrote the SVG stuff i have no clue how it works
 const SkillContainer = ({ skill }) => {
-    console.log('SkillContainer skill:', skill);
     const [textWidth, setTextWidth] = useState(0);
     const [textHeight, setTextHeight] = useState(0);
     return (
@@ -84,7 +84,7 @@ const SkillContainer = ({ skill }) => {
                         setTextHeight(e.nativeEvent.layout.height);
                     }}
                 >
-                    {skill.experience}
+                    {getLevelFromXp(skill.experience)}
                 </RunescapeText>
                 <RunescapeText
                     style={{
