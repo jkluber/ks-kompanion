@@ -1,6 +1,7 @@
 import * as Application from 'expo-application';
 import * as Device from 'expo-device';
 import { RANDOMS } from '../../../assets/config/RandomEvents.js'
+import { MEGA_RANDOMS }  from '../../../assets/config/MegaRandomEvents.js'
 import { View, Image, StyleSheet } from 'react-native';
 import RunescapeText from '../components/RunescapeText';
 import ARCHIVE_ENTRY from '../../../assets/config/archive_entry.json';
@@ -21,9 +22,49 @@ export const rollRandomEvent = async(deviceId) => {
     }));
 
     if (result.ready) {
-        let roll = Math.floor(Math.random() * 200);
-        if (199 == roll) {
-            return "You rolled a mega random!!!!"
+        let megaRandom = false;
+        if (!result.isBoosted) {
+            let roll = Math.floor(Math.random() * 200);
+            megaRandom = (199 === roll);
+        } else {
+            let roll = Math.floor(Math.random() * 50);
+            megaRandom = (49 === roll);
+        }
+        if (megaRandom) {
+            let roll = Math.floor(Math.random() * 4);
+            if (MEGA_RANDOMS[roll].reward != null) {
+                await modifyField(deviceId, MEGA_RANDOMS[roll].reward, MEGA_RANDOMS[roll].unit, "+");
+            }
+            return (
+                <View style={styles.randomEventView}>
+                    <RunescapeText
+                        font="RunescapeBold"
+                        fontSize={30}
+                        style={[styles.title,
+                            {
+                                textShadowColor: '#FFD700',
+                                textShadowOffset: { width: 0, height: 0 },
+                                textShadowRadius: 10,
+                            }
+                        ]}>
+                        YOU'VE ROLLED A MEGA RANDOM!!!
+                    </RunescapeText>
+                    <RunescapeText
+                        font="RunescapeBold"
+                        fontSize={24}
+                        style={styles.title}>
+                        {MEGA_RANDOMS[roll].title}
+                    </RunescapeText>
+                    <RunescapeText
+                        fontSize={22}
+                        style={styles.description}>
+                        {MEGA_RANDOMS[roll].description}
+                    </RunescapeText>
+                    <Image
+                        style={styles.image}
+                        source={MEGA_RANDOMS[roll].image}/>
+                </View>
+            );
         } else {
             let roll = Math.floor(Math.random() * 20);
             if (RANDOMS[roll].reward != null) {
@@ -72,7 +113,7 @@ export const fetchDeviceId = async() => {
 };
 
 export const sendRequest = async(method, body) => {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyArnDDvApJlKJqBUXSwfR1HS_cKDSa9DvHVP6i6I2yDhon1AkwoXcTyolnhU12Tqk/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwiTbl6Yq8J0kO8RXcTJESgWK-g1mxT-hsndU0SgGHAFmv9oE565-sJciYhl5MN6bg/exec", {
         method: method,
         body: body
     });

@@ -54,14 +54,12 @@ const Skills = () => {
             const fetchCompletion = async() => {
                 setLoading(true);
                 try {
-                    console.log('Fetching skills data...');
                     let deviceId = await fetchDeviceId();
                     const result = await sendRequest("POST", JSON.stringify({
                         deviceId: deviceId,
                         method: "getPlayerData",
                         whatDoIWantToday: "skills"
                     }));
-                    console.log('Fetched skills data:', result);
                     setSkills({
                         combat: { ...skills.combat, experience: result[0][0] },
                         magic: { ...skills.magic, experience: result[0][1] },
