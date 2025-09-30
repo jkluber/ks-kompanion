@@ -71,21 +71,21 @@ export const RANDOMS = {
     },
     10: {
         title: "Quiz Master",
-        description: "I haven't decided what to do with this one yet.",
+        description: "You get 1m!",
         reward: null,
         unit: null,
         image: require("../../assets/images/QuizMaster.png")
     },
     11: {
         title: "Sandwich Lady",
-        description: "I haven't decided what to do with this one yet.",
+        description: "You get 1m!",
         reward: null,
         unit: null,
         image: require("../../assets/images/SandwichLady.png")
     },
     12: {
         title: "Strange Plant",
-        description: "I haven't decided what to do with this one yet.",
+        description: "You have been poisoned!",
         reward: null,
         unit: null,
         image: require("../../assets/images/StrangePlant.png")
