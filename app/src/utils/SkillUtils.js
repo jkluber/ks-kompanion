@@ -23,3 +23,12 @@ export const getLevelFromXp = (xp) => {
     }
     return level;
 }
+
+export const getXpToNextLevel = (xp) => {
+    for (let i = 0; i < thresholds.length; i++) {
+        if (xp < thresholds[i]) {
+            return thresholds[i] - xp;
+        }
+    }
+    return null;
+}
