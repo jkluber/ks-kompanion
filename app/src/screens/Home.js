@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image, ActivityIndicator} from 'react-native';
+import {SafeAreaView, StyleSheet, ImageBackground, Text, TextInput, TouchableOpacity, View, Image, ActivityIndicator, Linking} from 'react-native';
 import { checkNewUser, fetchDeviceId, rollRandomEvent, processCode, sendRequest } from '../utils/MiscUtils';
 import { useXpLamp } from '../utils/SkillUtils';
 import DefaultModal from '../components/DefaultModal';
@@ -11,7 +11,7 @@ const Home = () => {
     const [newUser, setNewUser] = useState(false);
     const [username, setUsername] = useState('');
     const [code, setCode] = useState(null);
-    const [codeResult, setCodeResult] = useState(null);
+    const [codeResult, setCodeResult] = useState("");
     const [randomEventResult, setRandomEventResult] = useState('');
     const [randomEventModalVisible, setRandomEventModalVisible] = useState(false);
     const [noLampModalVisible, setNoLampModalVisible] = useState(false);
@@ -150,7 +150,7 @@ const Home = () => {
                     setCodeResult(null);
                     setCodeModalVisible(false);
                 }}>
-                    <Text style={styles.closeButtonText}>X</Text>
+                <Text style={styles.closeButtonText}>X</Text>
                 </TouchableOpacity>
                 <RunescapeText
                     font='RunescapeBold'
@@ -173,11 +173,17 @@ const Home = () => {
                         style={{ 
                             textAlign: 'center',
                             paddingTop: 30,
-                        }}>
-                        {codeResult}
+                        }}
+                        onPress={() => {
+                            if (codeResult.includes("www.youtube.com")) {
+                                Linking.openURL(codeResult);
+                            }
+                        }}
+                        >
+                        {codeResult.includes("youtube") ? "Tap here" : codeResult}
                     </RunescapeText>
                 )}
-                <TouchableOpacity style={styles.submit} onPress={() => {setCodeResult(processCode(code));}}>
+                <TouchableOpacity style={styles.submit} onPress={async() => {setCodeResult(await processCode(code));}}>
                     <Text>Submit</Text>
                 </TouchableOpacity>
             </DefaultModal>

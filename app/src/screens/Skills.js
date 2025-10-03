@@ -6,6 +6,7 @@ import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
 import { SKILL_UNLOCKS } from '../../../assets/config/SkillUnlocks'; 
 import DefaultModal from '../components/DefaultModal';
 import RunescapeText from '../components/RunescapeText';
+import { getXpToNextLevel } from '../utils/SkillUtils';
 
 export const SKILLS = [
     { name: 'Combat', icon: require('../../../assets/icons/combat.png') },
@@ -47,7 +48,7 @@ const Skills = () => {
     const [loading, setLoading] = useState(false);
     const [skillModalVisible, setSkillModalVisible] = useState(false);
     const [selectedSkill, setSelectedSkill] = useState(null);
-
+    const [selectedSkillXp, setSelectedSkillXp] = useState(null);
 
     useFocusEffect(
         useCallback(() => {
@@ -63,9 +64,9 @@ const Skills = () => {
                     setSkills({
                         combat: { ...skills.combat, experience: result[0][0] },
                         magic: { ...skills.magic, experience: result[0][1] },
-                        survival: { ...skills.survival, experience: result[0][2] },
-                        gathering: { ...skills.gathering, experience: result[0][3] },
                         thieving: { ...skills.thieving, experience: result[0][4] },
+                        gathering: { ...skills.gathering, experience: result[0][3] },
+                        survival: { ...skills.survival, experience: result[0][2] }
                     });
                 } catch (err) {
                     console.error(err);
@@ -83,14 +84,15 @@ const Skills = () => {
         return (
             <SkillContainer 
                 skill={skill}
-                onPress={() => handleSkillPress(item)}
+                onPress={() => handleSkillPress(item, skill.experience)}
             />
         );
     };
 
-    const handleSkillPress = (skill) => {
+    const handleSkillPress = (skill, xp) => {
         setSelectedSkill(skill);
         setSkillModalVisible(true);
+        setSelectedSkillXp(xp);
     };
 
     return (
@@ -137,6 +139,14 @@ const Skills = () => {
                             </View>
                         ))}
                     </View>
+                    <RunescapeText
+                        font="RunescapeThin"
+                        fontSize={20}
+                        style={{ textAlign: "left", marginBottom: 10 }}
+                    >
+                        Current XP: {selectedSkillXp}
+                        {getXpToNextLevel(selectedSkillXp) ? "\n\nXP to next level: " + getXpToNextLevel(selectedSkillXp): ""}
+                    </RunescapeText>
                     </>
                 )}
 

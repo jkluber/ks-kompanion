@@ -136,6 +136,8 @@ export const processCode = async(code) => {
             return ARCHIVE_ENTRY.Em;
         } else if (code.toLowerCase().includes("balsamo")) {
             return ARCHIVE_ENTRY.Balsamo;
+        } else if (code.toLowerCase().includes("chambers") || code.toLowerCase().includes("xeric") || "cox" === code.toLowerCase()) {
+            return ARCHIVE_ENTRY.Cox;
         } else if (code.toLowerCase().includes("hayden")) {
             return ARCHIVE_ENTRY.Hayden;
         } else if (code.toLowerCase().includes("irem")) {
@@ -146,6 +148,8 @@ export const processCode = async(code) => {
             return ARCHIVE_ENTRY.Jake;
         } else if (code.toLowerCase().includes("jj")) {
             return ARCHIVE_ENTRY.JJ;
+        } else if (code.toLowerCase().includes("justin")) {
+            return ARCHIVE_ENTRY.Justin;
         } else if (code.toLowerCase().includes("kate")) {
             return ARCHIVE_ENTRY.Kate;
         } else if (code.toLowerCase().includes("kyle")) {
@@ -156,6 +160,8 @@ export const processCode = async(code) => {
             return ARCHIVE_ENTRY.Maya;
         } else if (code.toLowerCase() === "penis") {
             return ARCHIVE_ENTRY.Penis
+        } else if (code.toLowerCase().includes("runescape") || code.toLowerCase().includes("osrs")) {
+            return ARCHIVE_ENTRY.Osrs;
         } else if (code.toLowerCase() === "sam") {
             return ARCHIVE_ENTRY.Sam;
         } else if (code.toLowerCase().includes("sam k") || code.toLowerCase().includes("samuel")) {
@@ -166,12 +172,16 @@ export const processCode = async(code) => {
             return ARCHIVE_ENTRY.Sid;
         } else if (code.toLowerCase().includes("slippy")) {
             return ARCHIVE_ENTRY.Slippy;
+        } else if (code.toLowerCase().includes("yob edom") || "yob" === code.toLowerCase()) {
+            return ARCHIVE_ENTRY.Yob;
         } else if (code.toLowerCase().includes("zach")) {
             return ARCHIVE_ENTRY.Zach;
         } else if (code.toLowerCase().includes("1738")) {
             return ARCHIVE_ENTRY[1738];
         } else if (code.toLowerCase().includes("1950")) {
             return ARCHIVE_ENTRY[1950];
+        } else if (code.toLowerCase() === "free gp") {
+            return ARCHIVE_ENTRY.RickRoll;
         }
     }
     return "No results."
