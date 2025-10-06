@@ -1,15 +1,14 @@
-import {SafeAreaView, View, FlatList, Modal, StyleSheet, Image, ActivityIndicator, Pressable} from 'react-native';
+import {SafeAreaView, View, FlatList, Text, StyleSheet, Image, ActivityIndicator, Pressable} from 'react-native';
 import SkillContainer from '../components/SkillContainer';
-import ProgressBar from '../components/ProgressBar';
 import { useFocusEffect } from '@react-navigation/native';
-import {useCallback, useState, useRef, useEffect} from 'react';
+import {useCallback, useState} from 'react';
 import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
 import { SKILL_UNLOCKS } from '../../../assets/config/SkillUnlocks'; 
 import DefaultModal from '../components/DefaultModal';
-import RunescapeText from '../components/RunescapeText';
-import { getXpToNextLevel } from '../utils/SkillUtils';
 import { TIER, getTierByPoints, getNextTier } from '../utils/Tiers';
 import RunescapeText from '../components/RunescapeText';
+import { getXpToNextLevel } from '../utils/SkillUtils';
+import ProgressBar from '../components/ProgressBar';
 
 export const SKILLS = [
     { name: 'Combat', icon: require('../../../assets/icons/combat.png') },
@@ -42,6 +41,7 @@ const initialSkills={
     }
 }
 
+
 const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the entire screen
 
 const Skills = () => {
@@ -49,10 +49,10 @@ const Skills = () => {
     const [skills, setSkills] = useState(initialSkills);
     const [khallengePoints, setKhallengePoints] = useState(0);
     const [currentTier, setTier] = useState(TIER.UNRANKED);
-    const [nextTier, setNextTier] = useState(TIER.EASY);
     const [loading, setLoading] = useState(false);
     const [skillModalVisible, setSkillModalVisible] = useState(false);
     const [selectedSkill, setSelectedSkill] = useState(null);
+    const [nextTier, setNextTier] = useState(TIER.EASY);
     const [selectedSkillXp, setSelectedSkillXp] = useState(null);
 
     useFocusEffect(
@@ -117,7 +117,7 @@ const Skills = () => {
                 >
                 </FlatList>
             </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center', width: '95%' }}>
+             <View style={{ justifyContent: 'center', alignItems: 'center', width: '95%' }}>
                 <RunescapeText
                     style={{
                         fontSize: 32,
@@ -229,11 +229,6 @@ const styles = StyleSheet.create({
         backgroundColor: ROOT_CONTAINER_COLOR, // Background color for the entire screen
         alignItems: 'center', // Center items horizontally
     },
-    image: {
-        width: 50,
-        height: 50,
-        resizeMode: 'contain'
-    }
 });
 
 export default Skills;
