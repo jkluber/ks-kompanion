@@ -140,7 +140,7 @@ const Skills = () => {
                         marginBottom: 10
                     }}
                 >
-                {nextTier.threshold - khallengePoints} Khallenge Points until {nextTier.name} rank
+                Current Rank: {currentTier.name}
                 </RunescapeText>
                 <Image source={currentTier.icon} style={styles.image}/>
                 <RunescapeText
@@ -153,7 +153,8 @@ const Skills = () => {
                         marginBottom: 10
                     }}
                 >
-                Current Rank: {currentTier.name}
+                {nextTier.threshold - khallengePoints > 0 ?
+                "" + (nextTier.threshold - khallengePoints) + " Khallenge Points until " + nextTier.name + " rank" : ""}
                 </RunescapeText>
             </View>
             <DefaultModal
@@ -229,6 +230,12 @@ const styles = StyleSheet.create({
         backgroundColor: ROOT_CONTAINER_COLOR, // Background color for the entire screen
         alignItems: 'center', // Center items horizontally
     },
+    image: {
+        width: 75,
+        height: 75,
+        resizeMode: 'contain',
+        marginBottom: 10
+    }
 });
 
 export default Skills;

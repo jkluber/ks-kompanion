@@ -1,27 +1,27 @@
 export const TIER = {
     UNRANKED: {
-        name: 'unranked',
-        icon: require('../../../assets/images/chat-log.png'),
+        name: 'Unranked',
+        icon: require('../../../assets/images/dung.png'),
         threshold: 0,
     },
     EASY: {
-        name: 'easy',
-        icon: require('../../../assets/images/easy-task.png'),
+        name: 'Bronze',
+        icon: require('../../../assets/images/bronze.png'),
         threshold: 20,
     },
     MEDIUM: {
-        name: 'medium',
-        icon: require('../../../assets/images/medium-task.png'),
+        name: 'Steel',
+        icon: require('../../../assets/images/steel.png'),
         threshold: 60,
     },
     HARD: {
-        name: 'hard',
-        icon: require('../../../assets/images/hard-task.png'),
+        name: 'Rune',
+        icon: require('../../../assets/images/rune.png'),
         threshold: 115,
     },
     ELITE: {
-        name: 'elite',
-        icon: require('../../../assets/images/elite-task.png'),
+        name: 'Dragon',
+        icon: require('../../../assets/images/dragon.png'),
         threshold: 170,
     }
 };
