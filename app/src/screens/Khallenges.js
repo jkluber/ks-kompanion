@@ -75,7 +75,6 @@ const Khallenges = () => {
         if (loading) return;
         setLoading(true);
         try {
-            console.log(item.repeatable);
             let operator = !isComplete || item.repeatable ? "+" : "-";
             await kompleteKhallenge(item.difficulty, item.skill, item.xp, operator, item.id);
             setCompletedItems(prev => {

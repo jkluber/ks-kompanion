@@ -1,9 +1,13 @@
-import {SafeAreaView, View, FlatList, StyleSheet, ActivityIndicator, Image} from 'react-native';
+import {SafeAreaView, View, FlatList, Modal, StyleSheet, Image, ActivityIndicator, Pressable} from 'react-native';
 import SkillContainer from '../components/SkillContainer';
 import ProgressBar from '../components/ProgressBar';
 import { useFocusEffect } from '@react-navigation/native';
 import {useCallback, useState, useRef, useEffect} from 'react';
 import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
+import { SKILL_UNLOCKS } from '../../../assets/config/SkillUnlocks'; 
+import DefaultModal from '../components/DefaultModal';
+import RunescapeText from '../components/RunescapeText';
+import { getXpToNextLevel } from '../utils/SkillUtils';
 import { TIER, getTierByPoints, getNextTier } from '../utils/Tiers';
 import RunescapeText from '../components/RunescapeText';
 
@@ -47,26 +51,27 @@ const Skills = () => {
     const [currentTier, setTier] = useState(TIER.UNRANKED);
     const [nextTier, setNextTier] = useState(TIER.EASY);
     const [loading, setLoading] = useState(false);
+    const [skillModalVisible, setSkillModalVisible] = useState(false);
+    const [selectedSkill, setSelectedSkill] = useState(null);
+    const [selectedSkillXp, setSelectedSkillXp] = useState(null);
 
     useFocusEffect(
         useCallback(() => {
             const fetchCompletion = async() => {
                 setLoading(true);
                 try {
-                    console.log('Fetching skills data...');
                     let deviceId = await fetchDeviceId();
                     const result = await sendRequest("POST", JSON.stringify({
                         deviceId: deviceId,
                         method: "getPlayerData",
                         whatDoIWantToday: "skills"
                     }));
-                    console.log('Fetched skills data:', result);
                     setSkills({
                         combat: { ...skills.combat, experience: result[0][0] },
                         magic: { ...skills.magic, experience: result[0][1] },
-                        survival: { ...skills.survival, experience: result[0][2] },
-                        gathering: { ...skills.gathering, experience: result[0][3] },
                         thieving: { ...skills.thieving, experience: result[0][4] },
+                        gathering: { ...skills.gathering, experience: result[0][3] },
+                        survival: { ...skills.survival, experience: result[0][2] }
                     });
                     var requestedTier = getTierByPoints(result[0][5])
                     setKhallengePoints(result[0][5]);
@@ -86,9 +91,17 @@ const Skills = () => {
     const renderSkill = (item) => {
         const skill = skills[item];
         return (
-            <SkillContainer skill={skill}>
-            </SkillContainer>
+            <SkillContainer 
+                skill={skill}
+                onPress={() => handleSkillPress(item, skill.experience)}
+            />
         );
+    };
+
+    const handleSkillPress = (skill, xp) => {
+        setSelectedSkill(skill);
+        setSkillModalVisible(true);
+        setSelectedSkillXp(xp);
     };
 
     return (
@@ -143,6 +156,56 @@ const Skills = () => {
                 Current Rank: {currentTier.name}
                 </RunescapeText>
             </View>
+            <DefaultModal
+                visible={skillModalVisible}
+                onRequestClose={() => setSkillModalVisible(false)}
+            >
+                {selectedSkill && (
+                    <>
+                    <RunescapeText
+                        font="RunescapeBold"
+                        fontSize={24}
+                        style={{marginBottom: 10}}
+                    >
+                        {selectedSkill.charAt(0).toUpperCase() + selectedSkill.slice(1)}
+                    </RunescapeText>
+                    <View style={{ width: "100%", alignItems: "flex-start" }}>
+                        {SKILL_UNLOCKS[selectedSkill].map((unlock, idx) => (
+                            <View key={idx} style={{ marginBottom: 20 }}>
+                            <RunescapeText
+                                font="RunescapeThin"
+                                fontSize={18}
+                                style={{ textAlign: "left", marginBottom: 2, color: "white" }}
+                            >
+                                Lvl {unlock.level} – {unlock.name}
+                            </RunescapeText>
+                            <RunescapeText
+                                font="RunescapeThin"
+                                fontSize={18}
+                                style={{ textAlign: "left", marginBottom: 10, color: "white" }}
+                            >
+                                {unlock.description}
+                            </RunescapeText>
+                            </View>
+                        ))}
+                    </View>
+                    <RunescapeText
+                        font="RunescapeThin"
+                        fontSize={20}
+                        style={{ textAlign: "left", marginBottom: 10 }}
+                    >
+                        Current XP: {selectedSkillXp}
+                        {getXpToNextLevel(selectedSkillXp) ? "\n\nXP to next level: " + getXpToNextLevel(selectedSkillXp): ""}
+                    </RunescapeText>
+                    </>
+                )}
+
+                <Pressable onPress={() => setSkillModalVisible(false)}>
+                    <Text style={{ color: "blue", textAlign: "center", marginTop: 20 }}>
+                    Close
+                    </Text>
+                </Pressable>
+            </DefaultModal>
             {loading && (
                 <View
                     style={{
