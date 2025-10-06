@@ -157,5 +157,4 @@ const styles = {
     },
 }
 
-
 export default SkillContainer;

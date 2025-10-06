@@ -1,12 +1,14 @@
-import {SafeAreaView, View, FlatList, Text, StyleSheet, Modal, ActivityIndicator, Pressable} from 'react-native';
+import {SafeAreaView, View, FlatList, Text, StyleSheet, Image, ActivityIndicator, Pressable} from 'react-native';
 import SkillContainer from '../components/SkillContainer';
 import { useFocusEffect } from '@react-navigation/native';
 import {useCallback, useState} from 'react';
 import { sendRequest, fetchDeviceId } from '../utils/MiscUtils';
 import { SKILL_UNLOCKS } from '../../../assets/config/SkillUnlocks'; 
 import DefaultModal from '../components/DefaultModal';
+import { TIER, getTierByPoints, getNextTier } from '../utils/Tiers';
 import RunescapeText from '../components/RunescapeText';
 import { getXpToNextLevel } from '../utils/SkillUtils';
+import ProgressBar from '../components/ProgressBar';
 
 export const SKILLS = [
     { name: 'Combat', icon: require('../../../assets/icons/combat.png') },
@@ -45,9 +47,12 @@ const ROOT_CONTAINER_COLOR = 'rgb(62, 53, 41)'; // Background color for the enti
 const Skills = () => {
 
     const [skills, setSkills] = useState(initialSkills);
+    const [khallengePoints, setKhallengePoints] = useState(0);
+    const [currentTier, setTier] = useState(TIER.UNRANKED);
     const [loading, setLoading] = useState(false);
     const [skillModalVisible, setSkillModalVisible] = useState(false);
     const [selectedSkill, setSelectedSkill] = useState(null);
+    const [nextTier, setNextTier] = useState(TIER.EASY);
     const [selectedSkillXp, setSelectedSkillXp] = useState(null);
 
     useFocusEffect(
@@ -68,6 +73,10 @@ const Skills = () => {
                         gathering: { ...skills.gathering, experience: result[0][3] },
                         survival: { ...skills.survival, experience: result[0][2] }
                     });
+                    var requestedTier = getTierByPoints(result[0][5])
+                    setKhallengePoints(result[0][5]);
+                    setTier(requestedTier);
+                    setNextTier(requestedTier === TIER.ELITE ? TIER.ELITE : getNextTier(requestedTier));
                 } catch (err) {
                     console.error(err);
                 } finally {
@@ -97,15 +106,56 @@ const Skills = () => {
 
     return (
         <SafeAreaView  style={styles.rootContainer}>
-            <FlatList 
-                data={Object.keys(skills)} // Use keys of skills object as data
-                renderItem={({item}) => renderSkill(item)}
-                keyExtractor={(item) => item} // Use index as key for now
-                scrollEnabled={false}
-                numColumns={2} // Display items in two columns
-                contentContainerStyle={{ alignItems: 'center', padding: 20 }} // Center items in the FlatList
-            >
-            </FlatList>
+            <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 10, height: 300}}>
+                <FlatList 
+                    data={Object.keys(skills)} // Use keys of skills object as data
+                    renderItem={({item}) => renderSkill(item)}
+                    keyExtractor={(item) => item} // Use index as key for now
+                    scrollEnabled={false}
+                    numColumns={2} // Display items in two columns
+                    contentContainerStyle={{ alignItems: 'center', padding: 20 }} // Center items in the FlatList
+                >
+                </FlatList>
+            </View>
+             <View style={{ justifyContent: 'center', alignItems: 'center', width: '95%' }}>
+                <RunescapeText
+                    style={{
+                        fontSize: 32,
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        color: 'white',
+                        marginBottom: 10
+                    }}
+                >
+                Khallenge Tier
+                </RunescapeText>
+                <ProgressBar khallengePoints={khallengePoints} />
+                <RunescapeText
+                    style={{
+                        fontSize: 24,
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        color: 'white',
+                        marginTop: 10,
+                        marginBottom: 10
+                    }}
+                >
+                {nextTier.threshold - khallengePoints} Khallenge Points until {nextTier.name} rank
+                </RunescapeText>
+                <Image source={currentTier.icon} style={styles.image}/>
+                <RunescapeText
+                    style={{
+                        fontSize: 24,
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        color: 'white',
+                        marginTop: 10,
+                        marginBottom: 10
+                    }}
+                >
+                Current Rank: {currentTier.name}
+                </RunescapeText>
+            </View>
             <DefaultModal
                 visible={skillModalVisible}
                 onRequestClose={() => setSkillModalVisible(false)}
