@@ -36,7 +36,7 @@
     {"description":"Attain a star as the result of a chance time","difficulty":"elite","xp":400,"id":24,"repeatable":false,"skill":"Survival"}
   ],
   "Farkle": [
-    {"description":"Complete a game (first to 10k points)","difficulty":"repeatable","xp":400,"id":25,"repeatable":true,"skill":"Thieving"},
+    {"description":"Complete a game (first to 10k points)","difficulty":"repeatable","xp":500,"id":25,"repeatable":true,"skill":"Thieving"},
     {"description":"Score your first 500 points","difficulty":"easy","xp":100,"id":26,"repeatable":false,"skill":"Thieving"},
     {"description":"Score an El Classico","difficulty":"medium","xp":200,"id":27,"repeatable":false,"skill":"Thieving"},
     {"description":"Roll triples of any number","difficulty":"hard","xp":300,"id":28,"repeatable":false,"skill":"Thieving"},
@@ -53,7 +53,7 @@
     {"description":"Complete a race","difficulty":"repeatable","xp":125,"id":35,"repeatable":true,"skill":"Magic"},
     {"description":"Complete a race in the top half","difficulty":"easy","xp":100,"id":36,"repeatable":false,"skill":"Magic"},
     {"description":"Win a race after finishing a lap in 12th place or worse","difficulty":"hard","xp":300,"id":37,"repeatable":false,"skill":"Magic"},
-      {"description":"Win a Knockout Tour","difficulty":"hard","xp":300,"id":371,"repeatable":false,"skill":"Magic"},
+    {"description":"Win a Knockout Tour","difficulty":"hard","xp":300,"id":371,"repeatable":false,"skill":"Magic"},
     {"description":"Beat a certain course in under X time (Jake’s record)","difficulty":"elite","xp":400,"id":38,"repeatable":false,"skill":"Magic"}
   ],
   "Darts": [
@@ -61,8 +61,8 @@
     {"description":"Score over 10 points on 1 dart","difficulty":"easy","xp":100,"id":40,"repeatable":false,"skill":"Thieving"},
     {"description":"Score 40 points or more on 1 dart","difficulty":"medium","xp":200,"id":41,"repeatable":false,"skill":"Thieving"},
     {"description":"Score a bulls eye","difficulty":"hard","xp":300,"id":42,"repeatable":false,"skill":"Thieving"},
-    {"description":"Have all 3 of your throws land in the same number slice","difficulty":"hard","xp":300,"id":421,"repeatable":false,"skill":"Thieving"},
-    {"description":"Score 100 points or more in one round","difficulty":"elite","xp":400,"id":43,"repeatable":false,"skill":"Thieving"}
+    {"description":"Have 3 of your throws land in the same number slice in one turn","difficulty":"hard","xp":300,"id":421,"repeatable":false,"skill":"Thieving"},
+    {"description":"Score 100 points or more in one turn","difficulty":"elite","xp":400,"id":43,"repeatable":false,"skill":"Thieving"}
   ],
   "Presidents/Assholes": [
     {"description":"Play a round (minimum 4 people)","difficulty":"repeatable","xp":125,"id":44,"repeatable":true,"skill":"Thieving"},
@@ -72,10 +72,11 @@
     {"description":"Become the President","difficulty":"elite","xp":400,"id":48,"repeatable":false,"skill":"Thieving"}
   ],
   "Fire time": [
-    {"description":"Sit at fire for 10 minutes","difficulty":"repeatable","xp":150,"id":49,"repeatable":true,"skill":"Gathering"},
+    {"description":"Sit at the fire for 10 minutes","difficulty":"repeatable","xp":150,"id":49,"repeatable":true,"skill":"Gathering"},
     {"description":"Put a log on the fire","difficulty":"easy","xp":100,"id":50,"repeatable":false,"skill":"Gathering"},
     {"description":"Eat a smore by the fire","difficulty":"easy","xp":100,"id":51,"repeatable":false,"skill":"Gathering"},
     {"description":"Tell a spooky campfire story","difficulty":"medium","xp":200,"id":52,"repeatable":false,"skill":"Gathering"},
+    {"description":"Burn some evidence","difficulty":"medium","xp":200,"id":86,"repeatable":false,"skill":"Gathering"},
     {"description":"Create a catchy campfire song","difficulty":"hard","xp":300,"id":53,"repeatable":false,"skill":"Gathering"}
   ],
   "General Drinking": [
@@ -111,12 +112,16 @@
   "Miscellania": [
     {"description":"Replace a trash bag","difficulty":"repeatable","xp":200,"id":77,"repeatable":true,"skill":"Gathering"},
     {"description":"Cleanup after a meal","difficulty":"repeatable","xp":200,"id":78,"repeatable":true,"skill":"Gathering"},
+    {"description":"Donate 5m GP to the Gatherer's Well","difficulty":"repeatable","xp":250,"id":87,"repeatable":true,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) a movie","difficulty":"repeatable","xp":300,"id":79,"repeatable":true,"skill":"Gathering"},
+    {"description":"Succeed at a skill check","difficulty":"easy","xp":100,"id":88,"repeatable":false,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) Fesh Pince 1","difficulty":"easy","xp":100,"id":73,"repeatable":false,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) Fesh Pince 2","difficulty":"easy","xp":100,"id":74,"repeatable":false,"skill":"Gathering"},
     {"description":"Watch (and pay attention to) Fesh Pince 3","difficulty":"easy","xp":100,"id":75,"repeatable":false,"skill":"Gathering"},
     {"description":"Create and do your taunt move","difficulty":"easy","xp":100,"id":76,"repeatable":false,"skill":"Combat"},
-    {"description":"Do a max skill emote on the front porch","difficulty":"elite","xp":400,"id":80,"repeatable":false,"skill":"Survival"}
+    {"description":"Find one of Yob's notes","difficulty":"hard","xp":300,"id":89,"repeatable":false,"skill":"Gathering"},
+    {"description":"Do a max skill emote on the front porch","difficulty":"elite","xp":400,"id":80,"repeatable":false,"skill":"Survival"},
+    {"description":"Win a sidequest game","difficulty":"elite","xp":400,"id":90,"repeatable":false,"skill":"Gathering"}
   ],
   "Wario Ware": [
     {"description":"Finish a game","difficulty":"repeatable","xp":300,"id":81,"repeatable":true,"skill":"Magic"},

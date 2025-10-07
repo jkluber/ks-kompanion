@@ -15,7 +15,7 @@ export const SKILL_UNLOCKS = {
   ],
   gathering: [
     { level: 5, name: "Delegator", description: "Make any player with a lower gathering level fetch you a drink." },
-    { level: 10, name: "Lumberjack", description: "Get 2 hits in hammerschlagen." },
+    { level: 10, name: "Lumberjack", description: "Get 2 swings in hammerschlagen. If at least one is a hit you did not miss for your turn." },
     { level: 15, name: "Observant", description: "Increased odds at rare events." },
     { level: 18, name: "Deep pockets", description: "Hold 2 lucky coins." },
     { level: 20, name: "Gathering Mastery", description: "50% XP boost." },
