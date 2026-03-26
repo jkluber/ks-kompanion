@@ -31,7 +31,7 @@ export const rollRandomEvent = async(deviceId) => {
             megaRandom = (49 === roll);
         }
         if (megaRandom) {
-            let roll = Math.floor(Math.random() * 4);
+            let roll = Math.floor(Math.random() * 5);
             if (MEGA_RANDOMS[roll].reward != null) {
                 await modifyField(deviceId, MEGA_RANDOMS[roll].reward, MEGA_RANDOMS[roll].unit, "+");
             }

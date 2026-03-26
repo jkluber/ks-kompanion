@@ -26,5 +26,12 @@ export const MEGA_RANDOMS = {
         reward: null,
         unit: null,
         image: require("../../assets/images/Cringaspren.png")
+    },
+    4: {
+        title: "Turael Skip",
+        description: "Auto complete any Khallenge!",
+        reward: null,
+        unit: null,
+        image: require("../../assets/images/Turael.png")
     }
 }

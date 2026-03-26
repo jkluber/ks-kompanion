@@ -12,17 +12,17 @@ export const TIER = {
     MEDIUM: {
         name: 'Steel',
         icon: require('../../../assets/images/steel.png'),
-        threshold: 60,
+        threshold: 50,
     },
     HARD: {
         name: 'Rune',
         icon: require('../../../assets/images/rune.png'),
-        threshold: 115,
+        threshold: 100,
     },
     ELITE: {
         name: 'Dragon',
         icon: require('../../../assets/images/dragon.png'),
-        threshold: 170,
+        threshold: 160,
     }
 };
 
@@ -45,7 +45,7 @@ export const getNextTier = (currentTier) => {
         case TIER.HARD:
             return TIER.ELITE;
         case TIER.ELITE:
-            return null; // No next tier
+            return null;
         default:
             return null;
     }

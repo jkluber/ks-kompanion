@@ -29,25 +29,25 @@
     {"description":"3-stock a level 7 CPU","difficulty":"elite","xp":400,"id":19,"repeatable":false,"skill":"Combat"}
   ],
   "Mario Party": [
-    {"description":"Complete a game (minimum 10 rounds)","difficulty":"repeatable","xp":1000,"id":20,"repeatable":true,"skill":"Survival"},
-    {"description":"Win a mini game","difficulty":"easy","xp":100,"id":21,"repeatable":false,"skill":"Survival"},
-    {"description":"Get any buddy","difficulty":"medium","xp":200,"id":22,"repeatable":false,"skill":"Survival"},
-    {"description":"Hold 2 stars at anytime","difficulty":"hard","xp":300,"id":23,"repeatable":false,"skill":"Survival"},
-    {"description":"Attain a star as the result of a chance time","difficulty":"elite","xp":400,"id":24,"repeatable":false,"skill":"Survival"}
+    {"description":"Complete a game (minimum 10 rounds)","difficulty":"repeatable","xp":1000,"id":20,"repeatable":true,"skill":"Magic"},
+    {"description":"Win a mini game","difficulty":"easy","xp":100,"id":21,"repeatable":false,"skill":"Magic"},
+    {"description":"Get any buddy","difficulty":"medium","xp":200,"id":22,"repeatable":false,"skill":"Magic"},
+    {"description":"Hold 2 stars at anytime","difficulty":"hard","xp":300,"id":23,"repeatable":false,"skill":"Magic"},
+    {"description":"Obtain a star as the result of a chance time","difficulty":"elite","xp":400,"id":24,"repeatable":false,"skill":"Magic"}
   ],
   "Farkle": [
     {"description":"Complete a game (first to 10k points)","difficulty":"repeatable","xp":500,"id":25,"repeatable":true,"skill":"Thieving"},
     {"description":"Score your first 500 points","difficulty":"easy","xp":100,"id":26,"repeatable":false,"skill":"Thieving"},
     {"description":"Score an El Classico","difficulty":"medium","xp":200,"id":27,"repeatable":false,"skill":"Thieving"},
     {"description":"Roll triples of any number","difficulty":"hard","xp":300,"id":28,"repeatable":false,"skill":"Thieving"},
-    {"description":"Roll the straight in one roll and twerk","difficulty":"elite","xp":400,"id":29,"repeatable":false,"skill":"Thieving"}
+    {"description":"Roll a straight in one roll and twerk","difficulty":"elite","xp":400,"id":29,"repeatable":false,"skill":"Thieving"}
   ],
   "Hammerschlagen": [
-    {"description":"Complete a game (at least 3 people)","difficulty":"repeatable","xp":800,"id":30,"repeatable":true,"skill":"Gathering"},
-    {"description":"Hit the nail","difficulty":"easy","xp":100,"id":31,"repeatable":false,"skill":"Gathering"},
-    {"description":"Hit a back to back","difficulty":"medium","xp":200,"id":32,"repeatable":false,"skill":"Gathering"},
-    {"description":"Use small end of the hammer","difficulty":"hard","xp":300,"id":33,"repeatable":false,"skill":"Gathering"},
-    {"description":"Miss no more than 2 times","difficulty":"elite","xp":400,"id":34,"repeatable":false,"skill":"Gathering"}
+    {"description":"Complete a game (at least 3 people)","difficulty":"repeatable","xp":800,"id":30,"repeatable":true,"skill":"Combat"},
+    {"description":"Hit the nail","difficulty":"easy","xp":100,"id":31,"repeatable":false,"skill":"Combat"},
+    {"description":"Hit a back to back","difficulty":"medium","xp":200,"id":32,"repeatable":false,"skill":"Combat"},
+    {"description":"Use small end of the hammer","difficulty":"hard","xp":300,"id":33,"repeatable":false,"skill":"Combat"},
+    {"description":"Miss no more than 2 times","difficulty":"elite","xp":400,"id":34,"repeatable":false,"skill":"Combat"}
   ],
   "Mario Kart": [
     {"description":"Complete a race","difficulty":"repeatable","xp":125,"id":35,"repeatable":true,"skill":"Magic"},
