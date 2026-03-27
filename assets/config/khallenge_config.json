@@ -15,18 +15,18 @@
   ],
   "Monkey Ball": [
     {"description":"Clear a level","difficulty":"repeatable","xp":25,"id":10,"repeatable":true,"skill":"Magic"},
-    {"description":"Complete 2-3 Hoppers just pick another easy level","difficulty":"easy","xp":100,"id":11,"repeatable":false,"skill":"Magic"},
+    {"description":"Complete 6-9 Switch Inferno","difficulty":"easy","xp":100,"id":11,"repeatable":false,"skill":"Magic"},
     {"description":"Get a strike in monkey bowling","difficulty":"medium","xp":200,"id":12,"repeatable":false,"skill":"Magic"},
-    {"description":"Complete 1-7 Slopes in under 10 seconds pick another level of similar difficulty","difficulty":"hard","xp":300,"id":13,"repeatable":false,"skill":"Magic"},
+    {"description":"Complete 10-6 Labyrinth","difficulty":"hard","xp":300,"id":13,"repeatable":false,"skill":"Magic"},
     {"description":"Complete 3-4 Dribbles in under 10 seconds","difficulty":"elite","xp":400,"id":14,"repeatable":false,"skill":"Magic"}
   ],
-  "Smash Bros": [
+  "Smash Bros Melee": [
     {"description":"Complete a game (at least 3 stock)","difficulty":"repeatable","xp":125,"id":15,"repeatable":true,"skill":"Combat"},
-    {"description":"Hit a certain amount in the homerun contest","difficulty":"easy","xp":100,"id":16,"repeatable":false,"skill":"Combat"},
+    {"description":"Hit the punching bag over 900 feet in home run contest","difficulty":"easy","xp":100,"id":16,"repeatable":false,"skill":"Combat"},
     {"description":"Falcon/Ganon punch kill a level 5 CPU","difficulty":"medium","xp":200,"id":17,"repeatable":false,"skill":"Combat"},
     {"description":"Win a Pokemon Battle (only items are pokeballs, can only damage your opponent through the pokemon you summon)","difficulty":"medium","xp":200,"id":171,"repeatable":false,"skill":"Combat"},
-    {"description":"Clear a certain break the targets stage in a certain amount of time","difficulty":"hard","xp":300,"id":18,"repeatable":false,"skill":"Combat"},
-    {"description":"3-stock a level 7 CPU","difficulty":"elite","xp":400,"id":19,"repeatable":false,"skill":"Combat"}
+    {"description":"3 stock a level 5 CPU","difficulty":"hard","xp":300,"id":18,"repeatable":false,"skill":"Combat"},
+    {"description":"Finish Pikachu's break the targets stage in under 25 seconds","difficulty":"elite","xp":400,"id":19,"repeatable":false,"skill":"Combat"}
   ],
   "Mario Party": [
     {"description":"Complete a game (minimum 10 rounds)","difficulty":"repeatable","xp":1000,"id":20,"repeatable":true,"skill":"Magic"},
@@ -54,7 +54,7 @@
     {"description":"Complete a race in the top half","difficulty":"easy","xp":100,"id":36,"repeatable":false,"skill":"Magic"},
     {"description":"Win a race after finishing a lap in 12th place or worse","difficulty":"hard","xp":300,"id":37,"repeatable":false,"skill":"Magic"},
     {"description":"Win a Knockout Tour","difficulty":"hard","xp":300,"id":371,"repeatable":false,"skill":"Magic"},
-    {"description":"Beat a certain course in under X time (Jake’s record)","difficulty":"elite","xp":400,"id":38,"repeatable":false,"skill":"Magic"}
+    {"description":"Finish Boo Cinema in trial mode in under 2:21.551","difficulty":"elite","xp":400,"id":38,"repeatable":false,"skill":"Magic"}
   ],
   "Darts": [
     {"description":"Complete a game (Cricket or 301, max team size 4)","difficulty":"repeatable","xp":750,"id":39,"repeatable":true,"skill":"Thieving"},
@@ -128,6 +128,6 @@
     {"description":"Succeed at any microgame","difficulty":"easy","xp":100,"id":82,"repeatable":false,"skill":"Magic"},
     {"description":"Give all other players a turtle","difficulty":"medium","xp":200,"id":83,"repeatable":false,"skill":"Magic"},
     {"description":"Claim a corner comet in Milky Way Delirium","difficulty":"hard","xp":300,"id":84,"repeatable":false,"skill":"Magic"},
-    {"description":">= 90% of the deck in a game of Card e Cards","difficulty":"elite","xp":400,"id":85,"repeatable":false,"skill":"Magic"}
+    {"description":"Win a Balloon Bang game without ever pumping the balloon","difficulty":"elite","xp":400,"id":85,"repeatable":false,"skill":"Magic"}
   ]
 }

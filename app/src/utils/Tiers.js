@@ -22,7 +22,7 @@ export const TIER = {
     ELITE: {
         name: 'Dragon',
         icon: require('../../../assets/images/dragon.png'),
-        threshold: 160,
+        threshold: 155,
     }
 };
 
