@@ -87,7 +87,7 @@
     {"description":"Invent a new cocktail and have someone else drink ALL of it","difficulty":"hard","xp":300,"id":57,"repeatable":false,"skill":"Survival"},
     {"description":"Tubthump","difficulty":"hard","xp":300,"id":571,"repeatable":false,"skill":"Survival"},
     {"description":"Open and drink an entire beer without using your hands","difficulty":"hard","xp":300,"id":572,"repeatable":false,"skill":"Survival"},
-    {"description":"Be the one to summon Father Grogarius","difficulty":"elite","xp":400,"id":58,"repeatable":false,"skill":"Survival"}
+    {"description":"Be the one to summon or defeat Father Grogarius","difficulty":"elite","xp":400,"id":58,"repeatable":false,"skill":"Survival"}
   ],
   "Hide and Seek": [
     {"description":"Play a game (minimum 5 people)","difficulty":"repeatable","xp":600,"id":59,"repeatable":true,"skill":"Survival"},
